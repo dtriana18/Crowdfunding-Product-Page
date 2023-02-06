@@ -1,6 +1,6 @@
-//  This file contains all application-wide Sass variables.
-
 @use "functions" as f;
+
+// ========== COLORS ==========
 
 $ligth-cyan: #3CB4AC;
 $dark-cyan: #147B74;
@@ -8,9 +8,13 @@ $white: #FFFFFF;
 $black: #000000;
 $gray: #7A7A7A;
 
+// ========== FONT-WEIGHT ==========
+
 $regular: 400;
 $medium: 500;
 $bold: 700;
+
+// ========== Z-INDEX ==========
 
 $z-1: 10;
 $z-2: 20;
@@ -18,7 +22,11 @@ $z-3: 30;
 $z-4: 40;
 $z-max: 999;
 
+// ========== LAYOUT MAX-WIDTH ==========
+
 $max-width: 1180px;
+
+// ========== MEDIA QUERIES BREAKPOINTS ==========
 
 $breakpoints: (
   "tablet": f.pxToEm(720),

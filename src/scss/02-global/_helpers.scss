@@ -1,0 +1,44 @@
+@use "../01-utilities" as *;
+
+// ========== REGULAR TEXT ==========
+
+.text {
+    font-size: pxToRem(14);
+    line-height: 1.7;
+    color: $gray;
+
+    @include mq(desktop) {
+        font-size: pxToRem(16);
+    }
+}
+
+// ========== BUTTONS ==========
+
+%button {
+    padding: pxToEm(18) pxToEm(42);
+    border-radius: 32px;
+    font-weight: $bold;
+    color: $white;
+}
+
+.button--primary {
+    @extend %button;
+    background-color: $cyan;
+
+    &--small {
+        @extend .button--primary;
+        font-size: pxToRem(14);
+        padding: pxToEm(16) pxToEm(32);
+    }
+}
+
+.button--disabled {
+    @extend %button;
+    background-color: rgb(47, 47, 47, 0.5);
+
+    &--small {
+        @extend .button--disabled;
+        font-size: pxToRem(14);
+        padding: pxToEm(16) pxToEm(32);
+    }
+}

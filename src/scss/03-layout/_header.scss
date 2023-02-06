@@ -1,0 +1,101 @@
+@use "../01-utilities" as *;
+
+.header {
+    min-height: 300px;
+    padding-top: 32px;
+    @include bg-image-hero("/images/image-hero-mobile.jpg");
+
+    @include mq(desktop) {
+        min-height: 400px;
+        padding-top: 48px;
+        @include bg-image-hero("/images/image-hero-desktop.jpg");
+    }
+}
+
+.navbar {
+    position: relative;
+    z-index: $z-2; // To be above the menu overlayer
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: min(85%, 1110px);
+    margin-inline: auto;
+
+    &__list {
+        position: absolute;
+        width: 100%;
+        top: 56px; // Fixed value
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        
+        font-size: pxToRem(18);
+        font-weight: $medium;
+        color: $black;
+
+        border-radius: 8px;
+        background-color: $white;
+
+        @include mq(tablet) {
+            position: static;
+            width: auto;
+
+            flex-direction: row;
+            column-gap: 32px;
+
+
+            font-size: pxToRem(13);
+            background-color: transparent;
+            color: $white;
+        }
+    }
+
+    &__link {
+        position: relative;
+        padding: 24px;
+        cursor: pointer;
+
+        // To only add border bottom to the first 2 links
+        &:nth-child(-n+2) {
+            border-bottom: 1px solid hsla(0, 0%, 18%, 0.1);
+
+            @include mq(tablet) {
+                border-bottom: none;
+            }
+        }
+
+        // Underline
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+
+            width: 100%;
+            height: 1px;
+            background-color: $white;
+
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 300ms;
+        }
+
+        @include mq(tablet) {
+            padding: 0;
+            padding-block: 2px;
+
+            &:hover::after {
+                transform: scaleX(100%);
+            }
+        }
+    }
+
+    &__menu-icon {
+        @include mq(tablet) {
+            display: none;
+        }
+    }
+}

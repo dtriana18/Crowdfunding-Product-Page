@@ -4,6 +4,7 @@
 
 $ligth-cyan: #3CB4AC;
 $dark-cyan: #147B74;
+$white: #FFFFFF;
 $black: #000000;
 $gray: #7A7A7A;
 
@@ -11,7 +12,7 @@ $regular: 400;
 $medium: 500;
 $bold: 700;
 
-$max-width: 1180px ;
+$max-width: 1180px;
 
 $breakpoints: (
   "tablet": f.pxToEm(720),

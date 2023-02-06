@@ -1,4 +1,37 @@
+@use "../01-utilities" as *;
+
 .header {
     background: url("/images/image-hero-mobile.jpg") center/cover no-repeat;
     min-height: 300px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+
+    width: 85%;
+    margin-inline: auto;
+    padding-top: 32px;
+
+    &__list {
+        display: none;
+        column-gap: 32px;
+
+        font-size: pxToRem(18);
+        font-weight: $medium;
+        color: $black;
+
+        @include mq(tablet) {
+            display: flex;
+
+            font-size: pxToRem(13);
+            color: $white;
+        }
+    }
+
+    &__menu-icon {
+        @include mq(tablet) {
+            display: none;
+        }
+    }
 }

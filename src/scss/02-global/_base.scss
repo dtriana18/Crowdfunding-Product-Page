@@ -1,0 +1,32 @@
+@use "../01-utilities" as *;
+
+@font-face {
+    font-family: "Commissioner";
+    font-style: normal;
+    font-display: swap;
+    
+    src: url("/fonts/commissioner-400-500-700.woff2") format('woff2');
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+body {
+    font-family: "Commissioner", sans-serif;
+    font-size: pxToRem(16);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $bold;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,42 @@
+@use "sass:math";
+
+// ========== PX TO REM ==========
+
+@function pxToRem($num) {
+    // Check if $num has any units
+    $isUnitless: math.is-unitless($num);
+
+    // If $num has units, throw an error
+    @if (not $isUnitless) {
+        @error "Error: Please provide a numerical value without units (e.g. '16' or '32'), unit specifications like 'px', 'rem', 'em', are not allowed.";
+    }
+    
+    // If $num is unitless, do the conversion
+    @else {
+        @return math.div($num, 16) * 1rem;
+    }
+}
+
+@debug pxToRem(16);
+
+
+
+
+// ========== PX TO EM ==========
+
+@function pxToEm($num) {
+    // Check if $num has any units
+    $isUnitless: math.is-unitless($num);
+
+    // If $num has units, throw an error
+    @if (not $isUnitless) {
+        @error "Error: Please provide a numerical value without units (e.g. '16' or '32'), unit specifications like 'px', 'rem', 'em', are not allowed.";
+    }
+    
+    // If $num is unitless, do the conversion
+    @else {
+        @return math.div($num, 16) * 1em;
+    }
+}
+
+@debug pxToEm(16);

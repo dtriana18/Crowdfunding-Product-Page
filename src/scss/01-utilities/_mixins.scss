@@ -1,0 +1,22 @@
+@use "variables" as v;
+
+// ========== MEDIA QUERIES ==========
+
+@mixin mq($size) {
+  //  Gets the value that is paired with the "$size" key in the "v.$breakpoints" map.
+  $em: map-get(v.$breakpoints, $size);
+
+  // Throws an error if "$size" is not found in the "v.$breakpoints" map.
+  @if (not $em) {
+    @error "Please enter a valid size ('tablet' or 'desktop')";
+  }
+  
+  // Otherwise, the mixin will create the media query by setting the minimum width of the viewport to the value of "$em".
+  @else {
+    @media (min-width: $em) {
+      @content;
+    }
+  }
+
+  @debug $em;
+}

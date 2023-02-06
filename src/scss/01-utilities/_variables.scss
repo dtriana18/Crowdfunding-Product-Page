@@ -1,0 +1,19 @@
+//  This file contains all application-wide Sass variables.
+
+@use "functions" as f;
+
+$ligth-cyan: #3CB4AC;
+$dark-cyan: #147B74;
+$black: #000000;
+$gray: #7A7A7A;
+
+$regular: 400;
+$medium: 500;
+$bold: 700;
+
+$max-width: 1180px ;
+
+$breakpoints: (
+  "tablet": f.pxToEm(720),
+  "desktop": f.pxToEm(1020),
+);

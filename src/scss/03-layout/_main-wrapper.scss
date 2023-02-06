@@ -1,4 +1,7 @@
 .main {
+    position: relative;
+    transform: translateY(-56px);
+
     width: min(85%, 1110px);
     margin-inline: auto;
 }

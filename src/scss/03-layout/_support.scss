@@ -1,0 +1,50 @@
+@use "../01-utilities" as *;
+
+.support {
+    background-color: $white;
+    border-radius: 8px;
+    padding-inline: 24px;
+    padding-bottom: 40px;
+
+    &__logo {
+        position: relative;
+        top: 0;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+    }
+
+    &__title {
+        margin-bottom: 16px;
+
+        font-size: pxToRem(20);
+        text-align: center;
+        color: $black;
+    }
+    
+    &__text {
+        margin-bottom: 24px;
+        padding-inline: 8px;
+        text-align: center;
+    }
+}
+
+.support__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 9px;
+
+}
+
+.bookmark-button {
+    border-radius: 999px;
+    background: transparent;
+
+    &__text {
+        display: none;
+    }
+}
+
+
+

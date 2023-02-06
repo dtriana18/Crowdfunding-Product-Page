@@ -30,6 +30,10 @@
         left: 0;
 
         display: flex;
+
+        // PARA QUE NO INTERFIERA MIENTRAS MAQUETO TODO LO DEMAS
+        display: none;
+
         flex-direction: column;
         
         font-size: pxToRem(18);

@@ -15,7 +15,8 @@
 // ========== BUTTONS ==========
 
 %button {
-    padding: pxToEm(18) pxToEm(42);
+    width: min(100%, 210px);
+    padding-block: pxToEm(18);
     border-radius: 32px;
     font-weight: $bold;
     color: $white;
@@ -28,7 +29,7 @@
     &--small {
         @extend .button--primary;
         font-size: pxToRem(14);
-        padding: pxToEm(16) pxToEm(32);
+        padding-block: pxToEm(16);
     }
 }
 
@@ -39,6 +40,6 @@
     &--small {
         @extend .button--disabled;
         font-size: pxToRem(14);
-        padding: pxToEm(16) pxToEm(32);
+        padding-block: pxToEm(16);
     }
 }

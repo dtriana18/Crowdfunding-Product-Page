@@ -91,8 +91,14 @@
 				<div class="support__buttons">
 					<button class="button--primary">Back this project</button>
 
-					<button class="bookmark-button">
-						<img class="bookmark-button__icon" src="/icons/icon-bookmark.svg" alt="Bookmark icon">
+					<button class="bookmark-button" aria-label="Bookmark this project">
+						<svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+							<g fill="none" fill-rule="evenodd">
+								<circle class="bookmark-button__icon-background" fill="#2F2F2F" cx="28" cy="28" r="28"/>
+								<path class="bookmark-button__icon-inside" fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/>
+							</g>
+						</svg>
+						<!-- <img class="bookmark-button__icon" src="/icons/icon-bookmark.svg" alt="Bookmark icon"> -->
 						<p class="bookmark-button__text">Bookmark</p>
 					</button>
 				</div>

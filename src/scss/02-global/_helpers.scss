@@ -7,7 +7,7 @@
     line-height: 1.7;
     color: $gray;
 
-    @include mq(desktop) {
+    @include mq(tablet) {
         font-size: pxToRem(16);
     }
 }

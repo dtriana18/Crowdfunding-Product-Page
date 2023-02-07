@@ -6,6 +6,11 @@
     padding-inline: 24px;
     padding-bottom: 40px;
 
+    @include mq(tablet) {
+        padding-inline: 48px;
+        padding-bottom: 48px;
+    }
+
     &__logo {
         position: relative;
         top: 0;
@@ -20,12 +25,20 @@
         font-size: pxToRem(20);
         text-align: center;
         color: $black;
+
+        @include mq(tablet) {
+            font-size: pxToRem(28);
+        }
     }
     
     &__text {
         margin-bottom: 24px;
         padding-inline: 8px;
         text-align: center;
+
+        @include mq(tablet) {
+            margin-bottom: 40px;
+        }
     }
 }
 
@@ -38,11 +51,23 @@
 }
 
 .bookmark-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 16px;
+
     border-radius: 999px;
-    background: transparent;
+    background: rgb(47, 47, 47, 0.05);
 
     &__text {
         display: none;
+        padding-right: 24px;
+        font-weight: $bold;
+        color: $gray;
+
+        @include mq(tablet) {
+            display: block;
+        }
     }
 }
 

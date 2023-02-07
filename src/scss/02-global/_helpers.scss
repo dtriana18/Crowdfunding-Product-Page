@@ -37,11 +37,13 @@
 
 .button--disabled {
     @extend %button;
-    background-color: rgb(47, 47, 47, 0.5);
+    background-color: rgba(#2F2F2F, 50%);
 
     &--small {
         @extend .button--disabled;
+        width: auto;
         font-size: pxToRem(14);
         padding-block: 16px;
+        padding-inline: 36px;
     }
 }

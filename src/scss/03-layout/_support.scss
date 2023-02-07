@@ -1,15 +1,9 @@
 @use "../01-utilities" as *;
 
 .support {
-    background-color: $white;
-    border-radius: 8px;
-    padding-inline: 24px;
-    padding-bottom: 40px;
-
-    @include mq(tablet) {
-        padding-inline: 48px;
-        padding-bottom: 48px;
-    }
+    @extend %section-card-layout;
+    padding-top: 0;
+    margin-bottom: 24px;
 
     &__logo {
         position: relative;

@@ -1,0 +1,13 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+%section-card-layout {
+    background-color: $white;
+    border-radius: 8px;
+    padding-inline: 24px;
+    padding-block: 40px;
+
+    @include mq(tablet) {
+        padding: 48px;
+    }
+}

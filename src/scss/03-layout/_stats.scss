@@ -1,0 +1,100 @@
+@use "../01-utilities" as *;
+
+.stats {
+    @extend %section-card-layout;
+    margin-bottom: 24px;
+    padding-top: 8px;
+    text-align: center;
+
+    @include mq(tablet) {
+        padding-top: 48px;
+        text-align: left;
+    }
+
+    &__flex-container {
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+
+        @include mq(tablet) {
+            flex-direction: row;
+        }
+    }
+
+    &__item {
+        width: fit-content;
+        height: fit-content;
+        padding-block: 24px;
+
+        @include mq(tablet) {
+            padding: 0;
+        }
+
+        &:nth-child(1) {
+            @include mq(tablet) {
+                padding-right: 48px;
+            }
+        }
+
+        &:nth-child(2) {
+            border-block: 1px solid rgba($black, 15%);
+            @include mq(tablet) {
+                border: none;
+                border-left: 1px solid rgba($black, 15%);
+                padding-inline: 48px;
+            }
+        }
+
+        
+        &:nth-child(3) {
+            @include mq(tablet) {
+                border-left: 1px solid rgba($black, 15%);
+                padding-left: 48px;
+            }
+        }
+    }
+
+    &__number {
+        margin-bottom: 9px;
+
+        font-size: pxToRem(32);
+        font-weight: $bold;
+        color: $black;
+    }
+
+    &__text {
+        @include mq(tablet) {
+            font-size: pxToRem(15);
+        }
+    }
+}
+
+.progress-bar {
+    margin-top: 8px;
+
+    width: 100%;
+    height: 12px;
+    border-radius: 999px;
+    background-color: rgba(#2F2F2F, 5%);
+
+    overflow: hidden;
+
+    @include mq(tablet) {
+        margin-top: 38px;
+    }
+
+    &__fill {
+        width: 100%;
+        height: 100%;
+        background-color: #3CB3AB;
+
+        transform: scaleX(50%);
+        transform-origin: left;
+        transition: transform 500ms;
+    }
+
+    &:hover &__fill {
+        transform: scaleX(100%);
+    }
+}

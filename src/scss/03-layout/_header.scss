@@ -5,7 +5,7 @@
     padding-top: 32px;
     @include bg-image-hero("/images/image-hero-mobile.jpg");
 
-    @include mq(desktop) {
+    @include mq(tablet) {
         min-height: 400px;
         padding-top: 48px;
         @include bg-image-hero("/images/image-hero-desktop.jpg");

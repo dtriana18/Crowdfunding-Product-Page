@@ -10,6 +10,7 @@
 
         @include mq(tablet) {
             margin-bottom: 35px;
+            font-size: pxToRem(20);
         }
     }
 
@@ -54,6 +55,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+    }
+
+    & p {
+        max-width: 40ch;
+
+        @include mq(tablet) {
+            max-width: none;
         }
     }
 

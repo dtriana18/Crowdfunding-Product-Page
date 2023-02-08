@@ -113,7 +113,7 @@
 
 .activeIcon {
     display: block;
-    animation: showIcon 300ms;
+    animation: showIcon 300ms forwards;
 }
 
 @keyframes showIcon {

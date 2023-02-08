@@ -7,6 +7,7 @@ function toggleMobileMenu() {
     // ICONS
     hamburguerMenuIcon.classList.toggle("activeIcon");
     closeMenuIcon.classList.toggle("activeIcon");
+    menuDarkOverlayer.classList.toggle("activeMenuOverlayer");
 }
 
 [hamburguerMenuIcon, closeMenuIcon].forEach(menuIcon => {

@@ -45,11 +45,6 @@
 }
 
 .bookmark-button {
-    @include mq(tablet) {
-        will-change: width;
-        width: 173px;
-    }
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +52,7 @@
 
     border-radius: 999px;
     background-color: rgba(#2F2F2F, 5%);
-    transition: background-color 300ms, width 150ms;
+    transition: background-color 300ms;
 
     &:hover {
         background-color: rgba(#2F2F2F, 15%);
@@ -92,10 +87,6 @@
 }
 
 .bookmark-button[active] {
-    @include mq(tablet) {
-        width: 190px;
-    }
-
     .bookmark-button__text {
         color: $dark-cyan;
     }

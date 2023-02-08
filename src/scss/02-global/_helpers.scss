@@ -27,7 +27,7 @@
     background-color: $cyan;
     transition: background-color 300ms;
 
-    &:hover {
+    &:hover, &:focus, &:focus-visible {
         background-color: #147A73;
     }
 

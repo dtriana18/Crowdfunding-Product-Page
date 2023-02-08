@@ -45,6 +45,10 @@
 }
 
 .bookmark-button {
+
+    width: 100%;
+    max-width: 173.1px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +56,7 @@
 
     border-radius: 999px;
     background-color: rgba(#2F2F2F, 5%);
-    transition: background-color 300ms;
+    transition: background-color 300ms, max-width 300ms;
 
     &:hover {
         background-color: rgba(#2F2F2F, 15%);
@@ -77,6 +81,10 @@
         }
     }
 
+    &__icon {
+        min-width: 56px;
+    }
+
     &__icon-background {
         transition: fill 150ms;
     }
@@ -87,6 +95,8 @@
 }
 
 .bookmark-button[active] {
+    max-width: 190.5px;
+
     .bookmark-button__text {
         color: $dark-cyan;
     }

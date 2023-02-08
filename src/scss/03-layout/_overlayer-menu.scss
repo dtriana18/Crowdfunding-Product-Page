@@ -15,6 +15,10 @@
     background: linear-gradient(to bottom, black, rgba(black, 0%));
 
     transition: visibility 500ms, opacity 500ms;
+
+    @include mq(tablet) {
+        display: none;
+    }
 }
 
 .activeMenuOverlayer {

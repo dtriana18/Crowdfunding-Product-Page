@@ -47,7 +47,7 @@ img {
 button {
     display: block;
     border: none;
-    outline: none;
+    outline: transparent;
     cursor: pointer;
     background-color: transparent;
 }
@@ -59,4 +59,3 @@ button[disabled] {
 span {
     display: block;
 }
-

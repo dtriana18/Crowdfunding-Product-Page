@@ -58,6 +58,11 @@
         background-color: rgba(#2F2F2F, 20%);
     }
 
+    &:focus-visible {
+        outline: 2px dashed $dark-cyan;
+        outline-offset: 4px;
+    }
+
     &__text {
         display: none;
         padding-right: 24px;

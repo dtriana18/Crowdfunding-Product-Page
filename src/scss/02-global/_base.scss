@@ -52,6 +52,10 @@ button {
     background-color: transparent;
 }
 
+button[disabled] {
+    cursor: auto;
+}
+
 span {
     display: block;
 }

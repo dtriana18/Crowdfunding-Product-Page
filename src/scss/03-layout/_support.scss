@@ -51,7 +51,12 @@
     column-gap: 16px;
 
     border-radius: 999px;
-    background: rgb(47, 47, 47, 0.05);
+    background-color: rgba(#2F2F2F, 5%);
+    transition: background-color 300ms;
+
+    &:hover {
+        background-color: rgba(#2F2F2F, 20%);
+    }
 
     &__text {
         display: none;

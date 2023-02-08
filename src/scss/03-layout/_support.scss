@@ -45,8 +45,10 @@
 }
 
 .bookmark-button {
-    will-change: width;
-    width: 173px;
+    @include mq(tablet) {
+        will-change: width;
+        width: 173px;
+    }
 
     display: flex;
     justify-content: space-between;
@@ -90,7 +92,9 @@
 }
 
 .bookmark-button[active] {
-    width: 190px;
+    @include mq(tablet) {
+        width: 190px;
+    }
 
     .bookmark-button__text {
         color: $dark-cyan;

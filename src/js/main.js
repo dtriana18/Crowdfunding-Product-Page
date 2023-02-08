@@ -57,7 +57,7 @@ function toggleBookmarkButton() {
     if (bookmarkButton.hasAttribute("active")) {
         setTimeout(() => {
             bookmarkText.textContent = "Bookmarked"
-        }, 120)
+        }, 150)
     } else {
         bookmarkText.textContent = "Bookmark"
     }

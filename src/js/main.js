@@ -1,7 +1,9 @@
+// ========== TOGGLE MOBILE MENU ==========
+
+const mobileMenu = document.querySelector("#mobileMenu");
+const menuDarkOverlayer = document.querySelector("#menuDarkOverlayer");
 const hamburguerMenuIcon = document.querySelector('#hamburguerMenuIcon');
 const closeMenuIcon = document.querySelector('#closeMenuIcon');
-const menuDarkOverlayer = document.querySelector("#menuDarkOverlayer");
-const mobileMenu = document.querySelector("#mobileMenu");
 
 function toggleMobileMenu() {
     // ICONS
@@ -15,9 +17,25 @@ function toggleMobileMenu() {
     mobileMenu.classList.toggle("activeNavbar");
 }
 
-// On overlayer click close menu
-menuDarkOverlayer.addEventListener("click", toggleMobileMenu);
+/* TOGGLE MENU WHEN
+    1. Clicking haburguer or close menu icon.
+    2. Clicking outside the menu (Overlayer).
+    3. Clicking a link in the menu.
+*/
 
-[hamburguerMenuIcon, closeMenuIcon].forEach(menuIcon => {
-    menuIcon.addEventListener("click", toggleMobileMenu);
-});
+function removeMobileFunction() {
+    if (window.innerWidth > 720) {
+        [hamburguerMenuIcon, closeMenuIcon, menuDarkOverlayer, mobileMenu].forEach(item => {
+            item.removeEventListener("click", toggleMobileMenu);
+        });
+    }
+    
+    else {
+        [hamburguerMenuIcon, closeMenuIcon, menuDarkOverlayer, mobileMenu].forEach(item => {
+            item.addEventListener("click", toggleMobileMenu);
+        });
+    }
+}
+
+removeMobileFunction();
+window.addEventListener("resize", removeMobileFunction);

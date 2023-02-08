@@ -1,4 +1,5 @@
 @use "../01-utilities" as *;
+@use "sass:color";
 
 .header {
     min-height: 300px;
@@ -23,36 +24,53 @@
     width: min(85%, 1110px);
     margin-inline: auto;
 
+    @include mq(tablet) {
+        align-items: baseline;
+    }
+
     &__list {
-        overflow: hidden;
+        // MENU HIDDEN AND TRANSITIONS
         visibility: hidden;
         opacity: 0;
         transform: scale(0.7) translateY(100vh);
-        transition: visibility 500ms, opacity 500ms, transform 500ms;
+        transition-property: visibility, opacity, transform;
+        transition-duration: 300ms;
+        transition-delay: 150ms;
 
+        // MENU POSITION
         position: absolute;
         width: 100%;
-        top: 56px; // Fixed value
+        top: 56px;
         left: 0;
 
+        // MENU LAYOUT
         display: flex;
         flex-direction: column;
         
+        // STYLES
+        border-radius: 8px;
         font-size: pxToRem(18);
         font-weight: $medium;
+        background-color: $white;
         color: $black;
 
-        border-radius: 8px;
-        background-color: $white;
-
         @include mq(tablet) {
+            // MENU VISIBILITY
+            visibility: visible;    
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            transition: none;
+
+            // MENU POSITION
             position: static;
             width: auto;
 
+            // MENU LAYOUT
             flex-direction: row;
             column-gap: 32px;
 
 
+            // STYLES
             font-size: pxToRem(13);
             background-color: transparent;
             color: $white;
@@ -62,65 +80,56 @@
     &__link {
         position: relative;
 
-
         a {
             display: block;
             padding: 24px;
-            transition: background-color 500ms;
 
-            &:focus, &:hover {
-                background-color: rgba($gray, 15%);
+            &:focus {
+                background-color: rgba(#2F2F2F, 10%);
             }
 
             @include mq(tablet) {
-                &:focus, &:hover {
-                    background-color: initial;
-                }
+                padding: 0;
+                padding-bottom: 6px;
             }
         }
 
         // To only add border bottom to the first 2 links
         &:nth-child(-n+2) {
-            border-bottom: 1px solid hsla(0, 0%, 18%, 0.1);
+            border-bottom: 1px solid rgba(#2F2F2F, 10%);
 
             @include mq(tablet) {
                 border-bottom: none;
             }
         }
 
-        // Underline
+        // Links underline
         &::after {
             content: "";
             position: absolute;
             left: 0;
-            bottom: -2px;
+            bottom: 0;
 
             width: 100%;
-            height: 1px;
-            background-color: $white;
+            height: 2px;
+            background: #71CFC9;
+            border-radius: 0 100% 100% 0;
 
-            transform: scaleX(0);
-            transform-origin: left;
+            transform: scaleX(0) translateY(200%);
             transition: transform 300ms;
         }
 
         @include mq(tablet) {
             padding: 0;
-            padding-block: 2px;
 
             &:hover::after {
-                transform: scaleX(100%);
+                transform: scaleX(100%) translateY(0);
             }
         }
     }
 
     &__menu-icon {
         display: none;
-        transition: opacity 500ms;
-
-        @include mq(tablet) {
-            display: none;
-        }
     }
 
     &__close-icon {
@@ -133,6 +142,10 @@
 .activeIcon {
     display: block;
     animation: showIcon 300ms forwards;
+
+    @include mq(tablet) {
+        display: none;
+    }
 }
 
 @keyframes showIcon {
@@ -149,5 +162,5 @@
 .activeNavbar {
     visibility: visible;    
     opacity: 1;
-    transform: scale(1) translateY(0px);
+    transform: scale(1) translateY(0);
 }

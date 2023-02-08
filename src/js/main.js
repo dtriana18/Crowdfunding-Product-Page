@@ -4,14 +4,11 @@ const menuDarkOverlayer = document.querySelector("#menuDarkOverlayer");
 const mobileMenu = document.querySelector("mobileMenu");
 
 function toggleMobileMenu() {
-    console.log("click");
-    hamburguerMenuIcon.classList.toggle("hidden");
-    hamburguerMenuIcon.classList.toggle("show");
-
-    closeMenuIcon.classList.toggle("show");
-    closeMenuIcon.classList.toggle("hidden");
+    // ICONS
+    hamburguerMenuIcon.classList.toggle("activeIcon");
+    closeMenuIcon.classList.toggle("activeIcon");
 }
 
 [hamburguerMenuIcon, closeMenuIcon].forEach(menuIcon => {
     menuIcon.addEventListener("click", toggleMobileMenu);
-})
+});

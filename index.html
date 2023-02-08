@@ -61,20 +61,26 @@
 	</head>
 	<body>
 		<!-- MOBILE MENU OVERLAYER -->
-		<div class="mobile-menu-overlayer"></div>
+		<div class="mobile-menu-overlayer" id="menuDarkOverlayer"></div>
 
 		<!-- HEADER SECTION -->
 		<header class="header">
 			<nav class="navbar">
 				<img class="navbar__logo" src="/images/logo.svg" alt="Crowdfund Logo">
 
-				<ul class="navbar__list">
+				<ul class="navbar__list" id="mobileMenu">
 					<li class="navbar__link"><a href="#">About</a></li>
 					<li class="navbar__link"><a href="#">Discover</a></li>
 					<li class="navbar__link"><a href="#">Get Started</a></li>
 				</ul>
 
-				<img class="navbar__menu-icon" src="/icons/icon-hamburger.svg" alt="Hamburguer icon">
+				<button class="navbar__menu-icon show" id="hamburguerMenuIcon">
+					<img src="/icons/icon-hamburger.svg" alt="Hamburguer icon">
+				</button>
+
+				<button class="navbar__close-icon hidden" id="closeMenuIcon">
+					<img src="public/icons/icon-close-menu.svg" alt="Close icon">
+				</button>
 			</nav>
 		</header>
 

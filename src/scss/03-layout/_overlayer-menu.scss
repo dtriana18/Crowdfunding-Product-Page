@@ -1,9 +1,9 @@
 @use "../01-utilities" as *;
 
 .mobile-menu-overlayer {
-    display: none;
+    // display: none;
 
-    position: absolute;
+    position: fixed;
     z-index: $z-1;
 
     top: 0;

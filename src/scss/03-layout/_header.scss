@@ -24,16 +24,14 @@
     margin-inline: auto;
 
     &__list {
+        visibility: hidden;
+
         position: absolute;
         width: 100%;
         top: 56px; // Fixed value
         left: 0;
 
         display: flex;
-
-        // PARA QUE NO INTERFIERA MIENTRAS MAQUETO TODO LO DEMAS
-        display: none;
-
         flex-direction: column;
         
         font-size: pxToRem(18);
@@ -101,5 +99,44 @@
         @include mq(tablet) {
             display: none;
         }
+    }
+}
+
+// JS CLASSES
+
+.hidden {
+    display: none;
+    animation: hidden 1000ms forwards;
+}
+
+@keyframes hidden {
+    0% {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.show {
+    animation: show 1000ms;
+}
+
+@keyframes show {
+    0% {
+        display: none;
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
     }
 }

@@ -45,6 +45,9 @@
 }
 
 .bookmark-button {
+    will-change: width;
+    width: 173px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,16 +55,16 @@
 
     border-radius: 999px;
     background-color: rgba(#2F2F2F, 5%);
-    transition: background-color 300ms;
+    transition: background-color 300ms, width 150ms;
 
     &:hover {
-        background-color: rgba(#2F2F2F, 20%);
+        background-color: rgba(#2F2F2F, 15%);
     }
 
     &:focus-visible {
         outline: 2px dashed $dark-cyan;
         outline-offset: 4px;
-        background-color: rgba(#2F2F2F, 20%);
+        background-color: rgba(#2F2F2F, 15%);
     }
 
     &__text {
@@ -70,9 +73,35 @@
         font-weight: $bold;
         color: $gray;
 
+        transition: color 150ms;
+
         @include mq(tablet) {
             display: block;
         }
+    }
+
+    &__icon-background {
+        transition: fill 150ms;
+    }
+
+    &__icon-inside {
+        transition: fill 150ms;
+    }
+}
+
+.bookmark-button[active] {
+    width: 190px;
+
+    .bookmark-button__text {
+        color: $dark-cyan;
+    }
+
+    .bookmark-button__icon-background {
+        fill: $dark-cyan;
+    }
+
+    .bookmark-button__icon-inside {
+        fill: $white;
     }
 }
 

@@ -40,3 +40,27 @@ function removeMobileMenuEventListeners() {
 
 removeMobileMenuEventListeners();
 window.addEventListener("resize", removeMobileMenuEventListeners);
+
+
+
+
+
+
+// ========== BOOKMARK BUTTON ==========
+
+const bookmarkButton = document.querySelector("#bookmarkButton");
+const bookmarkText = document.querySelector("#bookmarkText");
+
+function toggleBookmarkButton() {
+    bookmarkButton.toggleAttribute("active");
+
+    if (bookmarkButton.hasAttribute("active")) {
+        setTimeout(() => {
+            bookmarkText.textContent = "Bookmarked"
+        }, 120)
+    } else {
+        bookmarkText.textContent = "Bookmark"
+    }
+}
+
+bookmarkButton.addEventListener("click", toggleBookmarkButton);

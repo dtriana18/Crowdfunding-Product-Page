@@ -17,14 +17,15 @@ function toggleMobileMenu() {
     mobileMenu.classList.toggle("activeNavbar");
 }
 
-/* TOGGLE MENU WHEN
-    1. Clicking haburguer or close menu icon.
-    2. Clicking outside the menu (Overlayer).
-    3. Clicking a link in the menu.
-*/
-
-function removeMobileFunction() {
+// This function removes eventListeners on devices with a viewport width larger than 720px. It allows us to turn the event listeners on and off when the screen size changes.
+function removeMobileMenuEventListeners() {
     if (window.innerWidth > 720) {
+        /* TOGGLE MENU WHEN CLICKING
+            1. The haburguer or close menu icon.
+            2. Outside the menu (Overlayer).
+            3. A link in the menu.
+        */
+
         [hamburguerMenuIcon, closeMenuIcon, menuDarkOverlayer, mobileMenu].forEach(item => {
             item.removeEventListener("click", toggleMobileMenu);
         });
@@ -37,5 +38,5 @@ function removeMobileFunction() {
     }
 }
 
-removeMobileFunction();
-window.addEventListener("resize", removeMobileFunction);
+removeMobileMenuEventListeners();
+window.addEventListener("resize", removeMobileMenuEventListeners);

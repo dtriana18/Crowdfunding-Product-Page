@@ -220,23 +220,50 @@
 
 		<!-- POPUP MAIN -->
 		<section class="popup">
-			<img src="/public/icons/icon-close-modal.svg" alt="Close modal icon">
+			<img class="popup__close-icon" src="/public/icons/icon-close-modal.svg" alt="Close modal icon">
 
-			<h2>Back this project</h2>
-			<p>
+			<h2 class="popup__title">Back this project</h2>
+			<p class="text popup__text">
 				Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world? 
 			</p>
 
 			<form action="/">
-				<input type="radio" name="pledge" id="bamboo" value="no-reward">
+				<!-- <input type="radio" name="pledge" id="noReward" value="no-reward" checked>
+				<input type="radio" name="pledge" id="bamboo" value="bamboo-stand">
+				<input type="radio" name="pledge" id="black" value="black-edition-stand">
+				<input type="radio" name="pledge" id="mahogany" value="mahogany-special-edition" disabled> -->
 
-				<input type="radio" name="pledge" id="black" value="bamboo-stand">
+				<article class="popup__card">
+					<section>
+						<input type="radio" name="pledge" id="bamboo" value="bamboo-stand">
+						
+						<div>
+							<h3>Bamboo Stand</h3>
+							<span>Pledge $25 or more</span>
+						</div>
+					</section>
 
-				<input type="radio" name="pledge" id="mahogany" value="black-edition-stand">
+					<p>CONTENT</p>
 
-				<input type="radio" name="pledge" id="mahogany" value="mahogany-special-edition" disabled>
+					<div>
+						<p>101</p>
+						<span>left</span>
+					</div>
 
-				<button type="submit">Send</button>
+					<div class="popup__card-divider"></div>
+
+					<section>
+						<p>Enter your pledge</p>
+
+						<div>
+							<div>
+								<img src="" alt="Dollar icon">
+								<input type="number" name="" id="">
+							</div>
+							<button type="submit">Continue</button>
+						</div>
+					</section>
+				</article>
 			</form>
 		</section>
 	</body> 

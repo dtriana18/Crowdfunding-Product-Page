@@ -14,13 +14,13 @@
     transition: background-color 300ms, max-width 150ms;
 
     &:hover {
-        background-color: rgba(#2F2F2F, 10%);
+        background-color: rgba(#2F2F2F, 12.5%);
     }
 
     &:focus-visible {
         outline: 2px dashed $dark-cyan;
         outline-offset: 4px;
-        background-color: rgba(#2F2F2F, 10%);
+        background-color: rgba(#2F2F2F, 12.5%);
     }
 
     @include mq(tablet) {

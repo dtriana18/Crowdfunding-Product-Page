@@ -12,16 +12,16 @@
 
     border-radius: 999px;
     background-color: rgba(#2F2F2F, 5%);
-    transition: background-color 150ms, max-width 150ms;
+    transition: background-color 300ms, max-width 150ms;
 
     &:hover {
-        background-color: rgba(#2F2F2F, 15%);
+        background-color: rgba(#2F2F2F, 10%);
     }
 
     &:focus-visible {
         outline: 2px dashed $dark-cyan;
         outline-offset: 4px;
-        background-color: rgba(#2F2F2F, 15%);
+        background-color: rgba(#2F2F2F, 10%);
     }
 
     &__text {

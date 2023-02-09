@@ -45,10 +45,8 @@
 }
 
 .bookmark-button {
-    @include mq(tablet) {
-        will-change: width;
-        width: 173px;
-    }
+    width: 100%;
+    max-width: 173.1px;
 
     display: flex;
     justify-content: space-between;
@@ -57,7 +55,7 @@
 
     border-radius: 999px;
     background-color: rgba(#2F2F2F, 5%);
-    transition: background-color 300ms, width 150ms;
+    transition: background-color 150ms, max-width 150ms;
 
     &:hover {
         background-color: rgba(#2F2F2F, 15%);
@@ -70,6 +68,7 @@
     }
 
     &__text {
+        width: fit-content;
         display: none;
         padding-right: 24px;
         font-weight: $bold;
@@ -78,8 +77,19 @@
         transition: color 150ms;
 
         @include mq(tablet) {
-            display: block;
+            display: flex;
+            max-width: 101px;
         }
+    }
+
+    &__ed {
+        width: 0%;
+        height: 0%;
+        overflow: hidden;
+    }
+
+    &__icon {
+        min-width: 56px;
     }
 
     &__icon-background {
@@ -92,12 +102,11 @@
 }
 
 .bookmark-button[active] {
-    @include mq(tablet) {
-        width: 190px;
-    }
+    max-width: 190.5px;
 
     .bookmark-button__text {
         color: $dark-cyan;
+        animation: max-width 0ms 120ms forwards;
     }
 
     .bookmark-button__icon-background {
@@ -107,7 +116,31 @@
     .bookmark-button__icon-inside {
         fill: $white;
     }
+
+    .bookmark-button__ed {
+        animation: display 0ms 120ms forwards;
+    }
 }
 
+@keyframes max-width {
+    from {
+        max-width: 101px;
+    }
 
+    to {
+        max-width: 119px;
+    }
+}
+
+@keyframes display {
+    from {
+        width: 0%;
+        height: 0%;
+    }
+
+    to {
+        width: 100%;
+        height: 100%;
+    }
+}
 

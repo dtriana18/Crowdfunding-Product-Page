@@ -55,9 +55,9 @@ function toggleBookmarkButton() {
     bookmarkButton.toggleAttribute("active");
 
     if (bookmarkButton.hasAttribute("active")) {
-        bookmarkText.textContent = "Bookmarked"
+        bookmarkText.textContent = "ed";
     } else {
-        bookmarkText.textContent = "Bookmark"
+        bookmarkText.textContent = "";
     }
 }
 

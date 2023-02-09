@@ -135,39 +135,35 @@
         }
     }
 
-    &__menu-icon {
-        display: none;
-    }
-
-    &__close-icon {
+    &__menu-icon, &__close-icon {
         display: none;
     }
 }
 
-// JS CLASSES
+// JS FUNCTIONALLITY
 
-.activeIcon {
-    display: block;
-    animation: showIcon 300ms forwards;
+.navbar {
+    &__menu-icon[show], &__close-icon[show] {
+        display: block;
+        animation: showIcon 300ms forwards;
+    
+        @include mq(tablet) {
+            display: none;
+        }
+    }
 
-    @include mq(tablet) {
-        display: none;
+    &__list[show] {
+        visibility: visible;    
+        opacity: 1;
+        transform: scale(1) translateY(0);
     }
 }
 
 @keyframes showIcon {
-    from {
-        opacity: 0;
-    }
-
-    to { 
+    from { 
+        opacity: 0
+    } to { 
         opacity: 1;
         transform: rotate3d(1, 1, 1, 360deg);
     }
-}
-
-.activeNavbar {
-    visibility: visible;    
-    opacity: 1;
-    transform: scale(1) translateY(0);
 }

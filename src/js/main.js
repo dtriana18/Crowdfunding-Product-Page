@@ -7,14 +7,14 @@ const closeMenuIcon = document.querySelector('#closeMenuIcon');
 
 function toggleMobileMenu() {
     // ICONS
-    hamburguerMenuIcon.classList.toggle("activeIcon");
-    closeMenuIcon.classList.toggle("activeIcon");
+    closeMenuIcon.toggleAttribute("show");
+    hamburguerMenuIcon.toggleAttribute("show");
 
     // OVERLAYER
-    menuDarkOverlayer.classList.toggle("activeMenuOverlayer");
+    menuDarkOverlayer.toggleAttribute("show");
 
     // ACTUAL MENU
-    mobileMenu.classList.toggle("activeNavbar");
+    mobileMenu.toggleAttribute("show");
 }
 
 // This function removes eventListeners on devices with a viewport width larger than 720px. It allows us to turn the event listeners on and off when the screen size changes.
@@ -52,9 +52,9 @@ const bookmarkButton = document.querySelector("#bookmarkButton");
 const bookmarkText = document.querySelector("#bookmarkText");
 
 function toggleBookmarkButton() {
-    bookmarkButton.toggleAttribute("active");
+    bookmarkButton.toggleAttribute("bookmarked");
 
-    if (bookmarkButton.hasAttribute("active")) {
+    if (bookmarkButton.hasAttribute("bookmarked")) {
         bookmarkText.textContent = "ed";
     } else {
         bookmarkText.textContent = "";

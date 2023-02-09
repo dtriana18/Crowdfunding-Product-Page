@@ -2,7 +2,6 @@
 
 
 .bookmark-button {
-    width: 100%;
     max-width: 173.1px;
 
     display: flex;
@@ -22,6 +21,10 @@
         outline: 2px dashed $dark-cyan;
         outline-offset: 4px;
         background-color: rgba(#2F2F2F, 10%);
+    }
+
+    @include mq(tablet) {
+        width: 100%;
     }
 
     &__text {

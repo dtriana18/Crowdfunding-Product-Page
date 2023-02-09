@@ -1,48 +1,5 @@
 @use "../01-utilities" as *;
 
-.support {
-    @extend %section-card-layout;
-    padding-top: 0;
-    margin-bottom: 24px;
-
-    &__logo {
-        position: relative;
-        top: 0;
-        left: 50%;
-
-        transform: translate(-50%, -50%);
-    }
-
-    &__title {
-        margin-bottom: 16px;
-
-        font-size: pxToRem(20);
-        text-align: center;
-        color: $black;
-
-        @include mq(tablet) {
-            font-size: pxToRem(28);
-        }
-    }
-    
-    &__text {
-        margin-bottom: 24px;
-        padding-inline: 8px;
-        text-align: center;
-
-        @include mq(tablet) {
-            margin-bottom: 40px;
-        }
-    }
-}
-
-.support__buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 9px;
-
-}
 
 .bookmark-button {
     width: 100%;
@@ -143,4 +100,3 @@
         height: 100%;
     }
 }
-

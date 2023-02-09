@@ -1,7 +1,11 @@
-@forward "overlayer-menu";
+// HEADER
 @forward "header";
 
+// MAIN
 @forward "main-wrapper";
 @forward "support";
 @forward "stats";
 @forward "about";
+
+// MAIN POPUP
+@forward "popup-main";

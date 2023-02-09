@@ -1,0 +1,41 @@
+@use "../01-utilities" as *;
+
+.popup__card {
+    cursor: pointer;
+
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(#000000, 15%);
+
+    &__select-section {
+        display: flex;
+        align-items: center;
+        column-gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    &__radio-input {
+        display: block;
+    }
+
+    &__title-pledge-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    &__title {
+        font-size: pxToRem(14);
+        color: $black;
+    }
+
+    &__pledge {
+        font-size: pxToRem(14);
+        font-weight: $medium;
+        color: $cyan;
+    }
+
+    &__text {
+        margin-bottom: 24px;
+    }
+}

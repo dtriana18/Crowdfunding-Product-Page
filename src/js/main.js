@@ -65,10 +65,13 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 // ========== SELECT CARD ==========
 
-const popupCard = document.querySelectorAll(".popup__card__content");
+const popupCards = document.querySelectorAll(".popup__card__content");
+
 
 function toggleInputRadio() {
     const cardInput = document.querySelector(`#${this.id} .select__input`);
+    console.log(this.id);
+    console.log(cardInput);
 
     if (cardInput.checked) {
         cardInput.checked = false;
@@ -76,9 +79,8 @@ function toggleInputRadio() {
         cardInput.checked = true;
     }
 
-    console.log(cardInput);
 }
 
-popupCard.forEach(card => {
+popupCards.forEach(card => {
     card.addEventListener("click", toggleInputRadio)
 });

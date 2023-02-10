@@ -7,17 +7,20 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
+    height: 90%;
+    overflow-y: auto;
+
     width: min(85%, 730px);
     background-color: $white;
     border-radius: 8px;
     padding-inline: 24px;
-    padding-block: 32px;
+    border-block: 32px solid $white;
 
     &__close-icon {
         max-height: 15px;
 
         position: absolute;
-        top: 36px;
+        top: 4px;
         right: 24px;
     }
 
@@ -29,5 +32,13 @@
 
     &__text {
         margin-bottom: 24px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+
+        // overflow-y: scroll;
     }
 }

@@ -67,12 +67,29 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 const popupCards = document.querySelectorAll(".popup__card__content");
 
-function checkRadioInput() {
+function closeAllPledgeDropdowns() {
+    const pledgeDropdowns = document.querySelectorAll(".enter-pledge");
+
+    pledgeDropdowns.forEach(dropdown => dropdown.removeAttribute("show"));
+}
+
+function selectCard() {
+    // Close previous checked drop down
+    closeAllPledgeDropdowns();
+
     // Check radio input
     const cardInput = document.querySelector(`#${this.id} .select__input`);
     cardInput.checked = true;
+
+    // Open pledge drop down
+    const pledgeDropdown = this.nextElementSibling;
+    pledgeDropdown.setAttribute("show", "");
+
+    setTimeout(() =>  {
+        this.scrollIntoView({ behavior: "smooth" });
+    }, 500);
 }
 
 popupCards.forEach(card => {
-    card.addEventListener("click", checkRadioInput);
+    card.addEventListener("click", selectCard);
 });

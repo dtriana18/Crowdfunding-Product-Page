@@ -13,19 +13,10 @@
         padding-bottom: 32px;
         padding-bottom: 24px; // When the pledge opens
     }
-    
-    &__pledge {
-        padding-inline: 24px;
-    }
 
     &__text {
         margin-bottom: 24px;
     }
-
-    // &:hover .enter-pledge {
-    //     height: 140px;
-    //     border-top-color: rgba(#000000, 15%);
-    // }
 }
 
 // RADIO INPUT SECTION
@@ -68,75 +59,5 @@
     &__text {
         font-size: pxToRem(15);
         color: $gray;
-    }
-}
-
-.enter-pledge {
-    will-change: height;
-
-    height: 100%;
-    // height: 0px;
-
-    overflow: hidden;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: rgba(#000000, 15%);
-    // border-top-color: transparent;
-
-    transition-property: height, border-top-color;
-    transition-duration: 300ms;
-
-    &[show] {
-        height: 140px;
-        border-top-color: rgba(#000000, 15%);
-    }
-
-    &__text {
-        text-align: center;
-        margin-top: 24px;
-        margin-bottom: 16px;
-    }
-
-    &__form {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        column-gap: 16px;
-        margin-bottom: 24px;
-    }
-
-    &__input-wrapper {
-        display: flex;
-        column-gap: 8px;
-        max-width: 100px;
-        padding: 16px 24px;
-        border: 1px solid rgba(#000000, 15%);
-        border-radius: 999px;
-    } 
-
-    &__dollar-sign {
-        font-size: pxToRem(14);
-        font-weight: $bold;
-        color: rgba(#000000, 25%);
-    }
-
-    &__text-input {
-        display: block;
-        width: 100%;
-        outline: none;
-        border: none;
-
-        font-size: pxToRem(14);
-        font-weight: $bold;
-        color: $black;
-    }
-
-    &__submit-button {
-        padding: 16px 26px;
-        border-radius: 999px;
-        font-size: pxToRem(14);
-        font-weight: $bold;
-        color: $white;
-        background-color: $cyan;
     }
 }

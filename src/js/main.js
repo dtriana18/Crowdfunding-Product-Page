@@ -87,7 +87,7 @@ function selectCard() {
 
     setTimeout(() =>  {
         this.scrollIntoView({ behavior: "smooth" });
-    }, 500);
+    }, 300);
 }
 
 popupCards.forEach(card => {

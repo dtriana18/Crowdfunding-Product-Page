@@ -8,13 +8,21 @@
     transform: translate(-50%, -50%);
 
     height: 90%;
-    overflow-y: auto;
+    overflow-y: scroll;
 
     width: min(85%, 730px);
     background-color: $white;
     border-radius: 8px;
     padding-inline: 24px;
     border-block: 32px solid $white;
+
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+    
+    &::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
 
     &__close-icon {
         max-height: 15px;

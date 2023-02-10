@@ -69,16 +69,13 @@ const popupCards = document.querySelectorAll(".popup__card__content");
 
 
 function toggleInputRadio() {
+    // SELECT INPUT INSIDE THE CARD SELECTED
     const cardInput = document.querySelector(`#${this.id} .select__input`);
     console.log(this.id);
     console.log(cardInput);
 
-    if (cardInput.checked) {
-        cardInput.checked = false;
-    } else {
-        cardInput.checked = true;
-    }
-
+    // CHECK INPUT
+    cardInput.checked = true;
 }
 
 popupCards.forEach(card => {

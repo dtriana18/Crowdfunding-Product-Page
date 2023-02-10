@@ -15,7 +15,33 @@
     }
 
     &__radio-input {
-        display: block;
+        position: relative;
+        appearance: none;
+
+        width: 24px;
+        height: 24px;
+        border: 1px solid rgba(#000000, 15%);
+        border-radius: 999px;
+
+        &::before {
+            content: "";
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background-color: $cyan;
+            transform: translate(-50%, -50%) scale(0);
+
+            transition: transform 300ms;
+        }
+
+        &:checked:before {
+            transform: translate(-50%, -50%) scale(1);
+        }
     }
 
     &__title-pledge-container {

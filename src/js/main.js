@@ -67,17 +67,12 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 const popupCards = document.querySelectorAll(".popup__card__content");
 
-
-function toggleInputRadio() {
-    // SELECT INPUT INSIDE THE CARD SELECTED
+function checkRadioInput() {
+    // Check radio input
     const cardInput = document.querySelector(`#${this.id} .select__input`);
-    console.log(this.id);
-    console.log(cardInput);
-
-    // CHECK INPUT
     cardInput.checked = true;
 }
 
 popupCards.forEach(card => {
-    card.addEventListener("click", toggleInputRadio)
+    card.addEventListener("click", checkRadioInput);
 });

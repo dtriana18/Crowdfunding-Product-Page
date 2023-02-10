@@ -220,7 +220,7 @@
 
 		<!-- POPUP MAIN -->
 		<section class="popup">
-			<img class="popup__close-icon" src="/public/icons/icon-close-modal.svg" alt="Close modal icon">
+			<img class="popup__close-icon" src="/icons/icon-close-modal.svg" alt="Close modal icon">
 
 			<h2 class="popup__title">Back this project</h2>
 			<p class="text popup__text">
@@ -228,15 +228,15 @@
 			</p>
 
 			<form action="/">
-				<!-- <input type="radio" name="pledge" id="noReward" value="no-reward" checked>
-				<input type="radio" name="pledge" id="bamboo" value="bamboo-stand">
-				<input type="radio" name="pledge" id="black" value="black-edition-stand">
-				<input type="radio" name="pledge" id="mahogany" value="mahogany-special-edition" disabled> -->
+				<!-- <input type="radio" name="pledgePlan" id="noReward" value="no-reward" checked>
+				<input type="radio" name="pledgePlan" id="bamboo" value="bamboo-stand">
+				<input type="radio" name="pledgePlan" id="black" value="black-edition-stand">
+				<input type="radio" name="pledgePlan" id="mahogany" value="mahogany-special-edition" disabled> -->
 
 				<article class="popup__card">
-					<section class="popup__card__content">
+					<section id="popupCard2" class="popup__card__content">
 						<section class="select">
-							<input class="select__input" type="radio" name="pledge" id="bamboo" value="bamboo-stand">
+							<input class="select__input" type="radio" name="pledgePlan" id="bamboo" value="bamboo-stand">
 							
 							<div class="select__content">
 								<h3 class="select__title">Bamboo Stand</h3>
@@ -254,13 +254,21 @@
 						</section>
 					</section>
 
-					<section class="popup__card__pledge enter-pledge">
+					<section id="popupCardPledge" class="popup__card__pledge enter-pledge">
 						<p class="text enter-pledge__text">Enter your pledge</p>
 
 						<div class="enter-pledge__form">
-							<div>
-								<p>$ Pledge</p>
-								<input type="number" name="" id="">
+							<div class="enter-pledge__input-wrapper">
+								<p class="enter-pledge__dollar-sign">$</p>
+								<input 
+									id=""
+									class="enter-pledge__text-input"
+									type="text"
+									name="pledgeValue"
+									minlength="2"
+									maxlength="2"
+									required
+								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
 						</div>

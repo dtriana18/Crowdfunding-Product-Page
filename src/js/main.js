@@ -62,3 +62,23 @@ function toggleBookmarkButton() {
 }
 
 bookmarkButton.addEventListener("click", toggleBookmarkButton);
+
+// ========== SELECT CARD ==========
+
+const popupCard = document.querySelectorAll(".popup__card__content");
+
+function toggleInputRadio() {
+    const cardInput = document.querySelector(`#${this.id} .select__input`);
+
+    if (cardInput.checked) {
+        cardInput.checked = false;
+    } else {
+        cardInput.checked = true;
+    }
+
+    console.log(cardInput);
+}
+
+popupCard.forEach(card => {
+    card.addEventListener("click", toggleInputRadio)
+});

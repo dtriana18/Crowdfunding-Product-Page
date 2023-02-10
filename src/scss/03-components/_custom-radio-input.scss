@@ -1,6 +1,8 @@
 @use "../01-utilities" as *;
 
 .select__input {
+    cursor: pointer;
+
     position: relative;
     appearance: none;
 

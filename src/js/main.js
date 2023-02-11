@@ -7,6 +7,7 @@ function getElementsFromIds(...ids) {
 }
 
 // ========== TOGGLE MOBILE MENU ==========
+
 const menuElements = getElementsFromIds("mobileMenu", "menuDarkOverlayer", "hamburguerMenuIcon", "closeMenuIcon");
 
 function toggleMobileMenu() {
@@ -65,6 +66,8 @@ const mainPopup = document.querySelector("#mainPopup");
 const closeMainPopupIcon = document.querySelector("#closeMainPopupIcon");
 
 function toggleMainPopup() {
+    resetRadioInputs(); // Uncheck all radio buttons
+    resetSubCards(); // Removes the "active" atribute from all cards
     mainPopupOverlayer.toggleAttribute("show");
     mainPopup.toggleAttribute("show");
 }
@@ -81,13 +84,20 @@ function toggleMainPopup() {
 
 const allPopupSubCards = document.querySelectorAll(".popup__card__content");
 
-function resetSubCards() {
-    const cards = document.querySelectorAll(".popup__card");
-    cards.forEach(card => card.removeAttribute("active"));
+// Uncheck all radio buttons inside the sub cards
+function resetRadioInputs() {
+    const radioInputs = document.querySelectorAll(".select__input");
+    radioInputs.forEach(radio => radio.checked = false);
 }
 
+// Removes the "active" attribute from all previous sub cards
+function resetSubCards() {
+    const subCards = document.querySelectorAll(".popup__card");
+    subCards.forEach(card => card.removeAttribute("active"));
+}
+
+// Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
 function selectCard() {
-    // Removes the "active" attributes from all previous cards
     resetSubCards();
 
     // Sets the "active" attribute to the card
@@ -109,6 +119,10 @@ function selectCard() {
 allPopupSubCards.forEach(subCard => {
     subCard.addEventListener("click", selectCard);
 });
+
+
+
+
 
 // ========== FOCUSING PLEDGE TEXT INPUT ==========
 

@@ -1,6 +1,13 @@
+/**
+ * @param  {...string} ids - Elements ids 
+ * @returns {HTMLElement[]}
+*/
+function getElementsFromIds(...ids) {
+    return ids.map(id => document.querySelector("#" + id));
+}
+
 // ========== TOGGLE MOBILE MENU ==========
-const menuElementsIds = ["mobileMenu", "menuDarkOverlayer", "hamburguerMenuIcon", "closeMenuIcon"];
-const menuElements = menuElementsIds.map(id => document.querySelector(`#${id}`));
+const menuElements = getElementsFromIds("mobileMenu", "menuDarkOverlayer", "hamburguerMenuIcon", "closeMenuIcon");
 
 function toggleMobileMenu() {
     menuElements.forEach(item => {
@@ -57,13 +64,13 @@ const mainPopupOverlayer = document.querySelector("#mainPopupOverlayer");
 const mainPopup = document.querySelector("#mainPopup");
 const closeMainPopupIcon = document.querySelector("#closeMainPopupIcon");
 
-function openMainPopup(event) {
+function toggleMainPopup() {
     mainPopupOverlayer.toggleAttribute("show");
     mainPopup.toggleAttribute("show");
 }
 
 [backButton, closeMainPopupIcon, mainPopupOverlayer].forEach(item => {
-    item.addEventListener("click", openMainPopup)
+    item.addEventListener("click", toggleMainPopup)
 });
 
 

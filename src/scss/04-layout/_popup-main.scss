@@ -27,8 +27,7 @@
     }
 
     &__close-icon {
-        max-height: 15px;
-
+        cursor: pointer;
         position: absolute;
         top: 36px;
         right: 24px;
@@ -36,6 +35,15 @@
         @include mq(tablet) {
             top: 32px;
             right: 32px;
+        }
+
+        path {
+            fill: rgba(#000000, 40%);
+            transition: fill 300ms;
+        }
+
+        &:hover path {
+            fill: $cyan;
         }
     }
 

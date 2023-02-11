@@ -33,12 +33,20 @@
     }
 
     &__input-wrapper {
+        cursor: pointer;
+        
         display: flex;
         column-gap: 8px;
         max-width: 100px;
         padding: 16px 24px;
         border: 1px solid rgba(#000000, 15%);
         border-radius: 999px;
+
+        transition: border-color 300ms;
+
+        &[focus] {
+            border-color: $cyan;
+        }
     } 
 
     &__dollar-sign {
@@ -56,6 +64,7 @@
         font-size: pxToRem(14);
         font-weight: $bold;
         color: $black;
+        caret-color: $cyan;
     }
 
     &__submit-button {

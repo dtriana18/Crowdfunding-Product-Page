@@ -4,6 +4,12 @@
     border-radius: 8px;
     border: 1px solid rgba(#000000, 15%);
 
+    transition: border 300ms;
+
+    &[active] {
+        border: 2px solid $cyan;
+    }
+
     &__content {
         cursor: pointer;
 

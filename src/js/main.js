@@ -67,29 +67,67 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 const popupCards = document.querySelectorAll(".popup__card__content");
 
-function closeAllPledgeDropdowns() {
+function resetCards() {
     const pledgeDropdowns = document.querySelectorAll(".enter-pledge");
-
     pledgeDropdowns.forEach(dropdown => dropdown.removeAttribute("show"));
+
+    const cards = document.querySelectorAll(".popup__card");
+    cards.forEach(card => card.removeAttribute("active"));
 }
 
 function selectCard() {
     // Close previous checked drop down
-    closeAllPledgeDropdowns();
+    resetCards();
 
     // Check radio input
     const cardInput = document.querySelector(`#${this.id} .select__input`);
     cardInput.checked = true;
 
+    // Set card border to cyan
+    const card = this.parentElement;
+    card.setAttribute("active", "");
+
     // Open pledge drop down
     const pledgeDropdown = this.nextElementSibling;
     pledgeDropdown.setAttribute("show", "");
 
+    const input = pledgeDropdown.querySelector(".enter-pledge__text-input");
+    setTimeout(() =>  {
+        input.focus();
+    }, 500);
+
     setTimeout(() =>  {
         this.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+    }, 150);
 }
 
 popupCards.forEach(card => {
     card.addEventListener("click", selectCard);
+});
+
+const allPledgeTextInputs = document.querySelectorAll(".enter-pledge__text-input");
+const allTextInputsWrapper = document.querySelectorAll(".enter-pledge__input-wrapper");
+
+function inputFocus() {
+    const inputWrapper = this.parentElement;
+    inputWrapper.setAttribute("focus", "");
+}
+
+function inputFocusOut() {
+    const inputWrapper = this.parentElement;
+    inputWrapper.removeAttribute("focus");
+}
+
+allPledgeTextInputs.forEach(input => {
+    input.addEventListener("focus", inputFocus);
+    input.addEventListener("focusout", inputFocusOut);
+});
+
+function inputWrapperClick() {
+    const textInput = this.querySelector(".enter-pledge__text-input");
+    textInput.focus();
+}
+
+allTextInputsWrapper.forEach(inputWrapper => {
+    inputWrapper.addEventListener("click", inputWrapperClick);
 });

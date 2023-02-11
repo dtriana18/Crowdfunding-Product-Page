@@ -9,11 +9,6 @@
 
     transition: border 300ms, outline 300ms;
 
-    &[active] {
-        outline: 1px solid transparent;
-        border: 2px solid $cyan;
-    }
-
     &__content {
         cursor: pointer;
 
@@ -34,6 +29,20 @@
 
         @include mq(tablet) {
             font-size: pxToRem(15);
+        }
+    }
+}
+
+.popup__card[active] {
+    outline: 1px solid transparent;
+    border: 2px solid $cyan;
+
+    .enter-pledge {
+        height: 140px;
+        border-top-color: rgba(#000000, 15%);
+
+        @include mq(tablet) {
+            height: 96px;
         }
     }
 }

@@ -82,33 +82,24 @@ function toggleMainPopup() {
 const allPopupSubCards = document.querySelectorAll(".popup__card__content");
 
 function resetSubCards() {
-    // Hidde all active dropdows for entering pledge
-    const pledgeDropdowns = document.querySelectorAll(".enter-pledge");
-    pledgeDropdowns.forEach(dropdown => dropdown.removeAttribute("show"));
-
-    // Hidde all active dropdows for entering pledge
     const cards = document.querySelectorAll(".popup__card");
     cards.forEach(card => card.removeAttribute("active"));
 }
 
 function selectCard() {
-    // Close previous checked drop down
+    // Removes the "active" attributes from all previous cards
     resetSubCards();
 
-    // Set card border to cyan
+    // Sets the "active" attribute to the card
     const card = this.parentElement;
     card.setAttribute("active", "");
 
-    // Open pledge drop down
-    const pledgeDropdown = this.nextElementSibling;
-    pledgeDropdown.setAttribute("show", "");
-
-    // Check radio input
-    const cardRadio = document.querySelector(`#${this.id} .select__input`);
+    // Checks the radio input
+    const cardRadio = card.querySelector(".select__input");
     cardRadio.checked = true;
 
     // Focus the pledge input
-    const pledgeInput = pledgeDropdown.querySelector(".enter-pledge__text-input");
+    const pledgeInput = card.querySelector(".enter-pledge__text-input");
     setTimeout(() => pledgeInput.focus(), 500);
 
     // Scrolls the card into the visible area of the popup

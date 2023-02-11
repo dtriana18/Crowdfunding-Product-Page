@@ -20,15 +20,6 @@
         font-size: pxToRem(15);
     }
 
-    &[show] {
-        height: 140px;
-        border-top-color: rgba(#000000, 15%);
-
-        @include mq(tablet) {
-            height: 96px;
-        }
-    }
-
     &__text {
         text-align: center;
         margin-top: 24px;

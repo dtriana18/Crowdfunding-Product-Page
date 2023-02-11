@@ -1,11 +1,14 @@
 @use "../01-utilities" as *;
 
 .popup {
+    visibility: hidden;
+
     z-index: $z-max;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    opacity: 0;
+    transform: translate(-50%, -0%) scale(0);
 
     height: 90%;
     overflow-y: scroll;
@@ -16,10 +19,17 @@
     border-radius: 8px;
     padding: 32px 24px;
 
-    scrollbar-width: none;
+    transition: all 500ms;
 
+    scrollbar-width: none;
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    &[show] {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 
     @include mq(tablet) {

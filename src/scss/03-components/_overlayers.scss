@@ -32,9 +32,6 @@
 .popup-overlayer {
     @extend %overlayer;
 
-    visibility: visible;
-    opacity: 0.5;
-
     z-index: $z-3;
     background: #000000;
 

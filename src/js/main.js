@@ -63,6 +63,29 @@ function toggleBookmarkButton() {
 
 bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
+
+
+
+// ========== OPEN MAIN POPUP ==========
+
+const backButton = document.querySelector("#backButton");
+const mainPopupOverlayer = document.querySelector("#mainPopupOverlayer");
+const mainPopup = document.querySelector("#mainPopup");
+const closeMainPopupIcon = document.querySelector("#closeMainPopupIcon");
+
+function openMainPopup(event) {
+    mainPopupOverlayer.toggleAttribute("show");
+    mainPopup.toggleAttribute("show");
+}
+
+[backButton, closeMainPopupIcon, mainPopupOverlayer].forEach(item => {
+    item.addEventListener("click", openMainPopup)
+});
+
+
+
+
+
 // ========== SELECT CARD ==========
 
 const popupCards = document.querySelectorAll(".popup__card__content");

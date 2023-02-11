@@ -64,7 +64,7 @@
 		<div class="mobile-menu-overlayer" id="menuDarkOverlayer"></div>
 
 		<!-- POPUPS OVERLAYER -->
-		<div class="popup-overlayer"></div>
+		<div class="popup-overlayer" id="mainPopupOverlayer"></div>
 
 		<!-- HEADER SECTION -->
 		<header class="header">
@@ -100,7 +100,7 @@
 
 				<!-- BUTTONS SECTION -->
 				<div class="support__buttons">
-					<button class="button--primary">Back this project</button>
+					<button id="backButton" class="button--primary">Back this project</button>
 
 					<button id="bookmarkButton" class="bookmark-button" aria-label="Bookmark this project">
 						<svg class="bookmark-button__icon" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
@@ -219,8 +219,8 @@
 		</main>
 
 		<!-- POPUP MAIN -->
-		<section class="popup">
-			<svg class="popup__close-icon" width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill-rule="evenodd"/></svg>
+		<section id="mainPopup" class="popup">
+			<svg id="closeMainPopupIcon" class="popup__close-icon" width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill-rule="evenodd"/></svg>
 
 			<h2 class="popup__title">Back this project</h2>
 			<p class="text popup__text">
@@ -254,7 +254,6 @@
 									name="pledgeValue"
 									minlength="2"
 									maxlength="2"
-									required
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -297,7 +296,7 @@
 									name="pledgeValue"
 									minlength="2"
 									maxlength="2"
-									required
+									
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -340,7 +339,7 @@
 									name="pledgeValue"
 									minlength="2"
 									maxlength="2"
-									required
+									
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -383,7 +382,7 @@
 									name="pledgeValue"
 									minlength="2"
 									maxlength="2"
-									required
+									
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>

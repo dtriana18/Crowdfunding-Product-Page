@@ -79,19 +79,21 @@ function toggleMainPopup() {
 
 // ========== SELECT CARD ==========
 
-const popupCards = document.querySelectorAll(".popup__card__content");
+const allPopupSubCards = document.querySelectorAll(".popup__card__content");
 
-function resetCards() {
+function resetSubCards() {
+    // Hidde all active dropdows for entering pledge
     const pledgeDropdowns = document.querySelectorAll(".enter-pledge");
     pledgeDropdowns.forEach(dropdown => dropdown.removeAttribute("show"));
 
+    // Hidde all active dropdows for entering pledge
     const cards = document.querySelectorAll(".popup__card");
     cards.forEach(card => card.removeAttribute("active"));
 }
 
 function selectCard() {
     // Close previous checked drop down
-    resetCards();
+    resetSubCards();
 
     // Check radio input
     const cardInput = document.querySelector(`#${this.id} .select__input`);
@@ -115,12 +117,27 @@ function selectCard() {
     }, 150);
 }
 
-popupCards.forEach(card => {
-    card.addEventListener("click", selectCard);
+allPopupSubCards.forEach(subCard => {
+    subCard.addEventListener("click", selectCard);
 });
+
+// ========== FOCUSING PLEDGE TEXT INPUT ==========
 
 const allPledgeTextInputs = document.querySelectorAll(".enter-pledge__text-input");
 const allTextInputsWrapper = document.querySelectorAll(".enter-pledge__input-wrapper");
+
+// -----
+
+function inputWrapperClick() {
+    const textInput = this.querySelector(".enter-pledge__text-input");
+    textInput.focus();
+}
+
+allTextInputsWrapper.forEach(inputWrapper => {
+    inputWrapper.addEventListener("click", inputWrapperClick);
+});
+
+// -----
 
 function inputFocus() {
     const inputWrapper = this.parentElement;
@@ -135,13 +152,4 @@ function inputFocusOut() {
 allPledgeTextInputs.forEach(input => {
     input.addEventListener("focus", inputFocus);
     input.addEventListener("focusout", inputFocusOut);
-});
-
-function inputWrapperClick() {
-    const textInput = this.querySelector(".enter-pledge__text-input");
-    textInput.focus();
-}
-
-allTextInputsWrapper.forEach(inputWrapper => {
-    inputWrapper.addEventListener("click", inputWrapperClick);
 });

@@ -1,6 +1,5 @@
 @use "../01-utilities" as *;
 
-
 .bookmark-button {
     max-width: 173.1px;
 
@@ -62,27 +61,28 @@
 }
 
 .bookmark-button[bookmarked] {
+    $this: ".bookmark-button";
     max-width: 190.5px;
 
-    .bookmark-button__text {
+    #{$this}__text {
         color: $dark-cyan;
-        animation: max-width 0ms 150ms forwards;
+        animation: expandButton 0ms 150ms forwards;
     }
 
-    .bookmark-button__icon-background {
+    #{$this}__icon-background {
         fill: $dark-cyan;
     }
 
-    .bookmark-button__icon-inside {
+    #{$this}__icon-inside {
         fill: $white;
     }
 
-    .bookmark-button__ed {
-        animation: display 0ms 150ms forwards;
+    #{$this}__ed {
+        animation: addLetters 0ms 150ms forwards;
     }
 }
 
-@keyframes max-width {
+@keyframes expandButton {
     from {
         max-width: 101px;
     }
@@ -92,7 +92,7 @@
     }
 }
 
-@keyframes display {
+@keyframes addLetters {
     from {
         width: 0%;
         height: 0%;

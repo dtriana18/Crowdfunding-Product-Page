@@ -1,46 +1,32 @@
 // ========== TOGGLE MOBILE MENU ==========
-
-const mobileMenu = document.querySelector("#mobileMenu");
-const menuDarkOverlayer = document.querySelector("#menuDarkOverlayer");
-const hamburguerMenuIcon = document.querySelector('#hamburguerMenuIcon');
-const closeMenuIcon = document.querySelector('#closeMenuIcon');
+const menuElementsIds = ["mobileMenu", "menuDarkOverlayer", "hamburguerMenuIcon", "closeMenuIcon"];
+const menuElements = menuElementsIds.map(id => document.querySelector(`#${id}`));
 
 function toggleMobileMenu() {
-    // ICONS
-    closeMenuIcon.toggleAttribute("show");
-    hamburguerMenuIcon.toggleAttribute("show");
-
-    // OVERLAYER
-    menuDarkOverlayer.toggleAttribute("show");
-
-    // ACTUAL MENU
-    mobileMenu.toggleAttribute("show");
+    menuElements.forEach(item => {
+       item.toggleAttribute("show"); 
+    });
 }
 
 // This function removes eventListeners on devices with a viewport width larger than 720px. It allows us to turn the event listeners on and off when the screen size changes.
-function removeMobileMenuEventListeners() {
-    if (window.innerWidth > 720) {
-        /* TOGGLE MENU WHEN CLICKING
-            1. The haburguer or close menu icon.
-            2. Outside the menu (Overlayer).
-            3. A link in the menu.
-        */
+function manageMenuEventListeners() {
+    const method = window.innerWidth > 720 ?
+    "removeEventListener"
+    : "addEventListener";
 
-        [hamburguerMenuIcon, closeMenuIcon, menuDarkOverlayer, mobileMenu].forEach(item => {
-            item.removeEventListener("click", toggleMobileMenu);
-        });
-    }
-    
-    else {
-        [hamburguerMenuIcon, closeMenuIcon, menuDarkOverlayer, mobileMenu].forEach(item => {
-            item.addEventListener("click", toggleMobileMenu);
-        });
-    }
+    /* TOGGLE MENU WHEN CLICKING
+        1. The haburguer or close menu icon.
+        2. Outside the menu (Overlayer).
+        3. A link in the menu.
+    */
+
+    menuElements.forEach(item => {
+        item[method]("click", toggleMobileMenu);
+    });
 }
 
-removeMobileMenuEventListeners();
-window.addEventListener("resize", removeMobileMenuEventListeners);
-
+manageMenuEventListeners();
+window.addEventListener("resize", manageMenuEventListeners);
 
 
 
@@ -54,14 +40,12 @@ const bookmarkText = document.querySelector("#bookmarkText");
 function toggleBookmarkButton() {
     bookmarkButton.toggleAttribute("bookmarked");
 
-    if (bookmarkButton.hasAttribute("bookmarked")) {
-        bookmarkText.textContent = "ed";
-    } else {
-        bookmarkText.textContent = "";
-    }
+    const isBookmarked = bookmarkButton.hasAttribute("bookmarked");
+    bookmarkText.textContent = isBookmarked ? "ed" : "";
 }
 
 bookmarkButton.addEventListener("click", toggleBookmarkButton);
+
 
 
 

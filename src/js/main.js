@@ -95,10 +95,6 @@ function selectCard() {
     // Close previous checked drop down
     resetSubCards();
 
-    // Check radio input
-    const cardInput = document.querySelector(`#${this.id} .select__input`);
-    cardInput.checked = true;
-
     // Set card border to cyan
     const card = this.parentElement;
     card.setAttribute("active", "");
@@ -107,14 +103,16 @@ function selectCard() {
     const pledgeDropdown = this.nextElementSibling;
     pledgeDropdown.setAttribute("show", "");
 
-    const input = pledgeDropdown.querySelector(".enter-pledge__text-input");
-    setTimeout(() =>  {
-        input.focus();
-    }, 500);
+    // Check radio input
+    const cardRadio = document.querySelector(`#${this.id} .select__input`);
+    cardRadio.checked = true;
 
-    setTimeout(() =>  {
-        this.scrollIntoView({ behavior: "smooth" });
-    }, 150);
+    // Focus the pledge input
+    const pledgeInput = pledgeDropdown.querySelector(".enter-pledge__text-input");
+    setTimeout(() => pledgeInput.focus(), 500);
+
+    // Scrolls the card into the visible area of the popup
+    setTimeout(() => this.scrollIntoView({ behavior: "smooth" }), 150);
 }
 
 allPopupSubCards.forEach(subCard => {

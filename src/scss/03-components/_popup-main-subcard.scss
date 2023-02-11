@@ -1,12 +1,16 @@
 @use "../01-utilities" as *;
 
 .popup__card {
+    position: relative;
     border-radius: 8px;
-    border: 1px solid rgba(#000000, 15%);
+    outline: 1px solid rgba(#000000, 15%);
+    border: 2px solid transparent;
 
-    transition: border 300ms;
+
+    transition: border 300ms, outline 300ms;
 
     &[active] {
+        outline: 1px solid transparent;
         border: 2px solid $cyan;
     }
 
@@ -18,10 +22,19 @@
 
         padding-bottom: 32px;
         padding-bottom: 24px; // When the pledge opens
+
+        @include mq(tablet) {
+            padding-top: 32px;
+            padding-inline: 28px;
+        }
     }
 
     &__text {
         margin-bottom: 24px;
+
+        @include mq(tablet) {
+            font-size: pxToRem(15);
+        }
     }
 }
 
@@ -36,17 +49,31 @@
         display: flex;
         flex-direction: column;
         row-gap: 8px;
+
+        @include mq(tablet) {
+            flex-direction: row;
+            align-items: center;
+            column-gap: 16px;
+        }
     }
     
     &__title {
         font-size: pxToRem(14);
         color: $black;
+
+        @include mq(tablet) {
+            font-size: pxToRem(16);
+        }
     }
     
     &__pledge {
         font-size: pxToRem(14);
         font-weight: $medium;
         color: $cyan;
+
+        @include mq(tablet) {
+            font-size: pxToRem(16);
+        }
     }
 }
 
@@ -55,6 +82,12 @@
     display: flex;
     align-items: center;
     column-gap: 8px;
+
+    @include mq(tablet) {
+        position: absolute;
+        top: 32px;
+        right: 28px;
+    }
 
     &__number {
         font-size: pxToRem(18);

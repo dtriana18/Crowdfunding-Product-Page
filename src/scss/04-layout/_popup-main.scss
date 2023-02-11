@@ -22,22 +22,40 @@
         display: none;
     }
 
+    @include mq(tablet) {
+        padding: 48px;
+    }
+
     &__close-icon {
         max-height: 15px;
 
         position: absolute;
         top: 36px;
         right: 24px;
+
+        @include mq(tablet) {
+            top: 32px;
+            right: 32px;
+        }
     }
 
     &__title {
-        color: $black;
-        font-size: pxToRem(18);
         margin-bottom: 24px;
+        font-size: pxToRem(18);
+        color: $black;
+
+        @include mq(tablet) {
+            margin-bottom: 16px;
+            font-size: pxToRem(24);
+        }
     }
 
     &__text {
         margin-bottom: 24px;
+
+        @include mq(tablet) {
+            margin-bottom: 32px;
+        }
     }
 
     &__form {

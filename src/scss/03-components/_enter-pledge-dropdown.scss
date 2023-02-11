@@ -13,15 +13,31 @@
     transition-property: height, border-top-color;
     transition-duration: 300ms;
 
+    @include mq(tablet) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: pxToRem(15);
+    }
+
     &[show] {
         height: 140px;
         border-top-color: rgba(#000000, 15%);
+
+        @include mq(tablet) {
+            height: 96px;
+        }
     }
 
     &__text {
         text-align: center;
         margin-top: 24px;
         margin-bottom: 16px;
+
+        @include mq(tablet) {
+            font-size: pxToRem(15);
+            margin: 0;
+        }
     }
 
     &__form {
@@ -30,6 +46,11 @@
         align-items: center;
         column-gap: 16px;
         margin-bottom: 24px;
+
+        @include mq(tablet) {
+            justify-content: flex-start;
+            margin: 0;
+        }
     }
 
     &__input-wrapper {

@@ -94,7 +94,7 @@ function resetRadioInputs() {
 }
 
 function resetPledgeInputs() {
-    const pledgeInputs = document.querySelectorAll(".enter-pledge__text-input");
+    const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
     pledgeInputs.forEach(input => input.setAttribute("disabled", ""));
 }
 
@@ -121,7 +121,7 @@ function selectCard(cardId) {
     cardRadio.checked = true;
 
     // Focus the pledge input and removes "disabled" attribute
-    const pledgeInput = card.querySelector(".enter-pledge__text-input");
+    const pledgeInput = card.querySelector(".enter-pledge__pledge-input");
     pledgeInput.removeAttribute("disabled");
 
     setTimeout(() => pledgeInput.focus(), 500);

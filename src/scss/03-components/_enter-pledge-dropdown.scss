@@ -67,7 +67,10 @@
         color: rgba(#000000, 25%);
     }
 
-    &__text-input {
+    &__pledge-input {
+        -moz-appearance: textfield;
+        appearance: textfield;
+
         display: block;
         width: 100%;
         outline: none;
@@ -77,6 +80,12 @@
         font-weight: $bold;
         color: $black;
         caret-color: $cyan;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
 
     &__submit-button {

@@ -100,9 +100,11 @@ function resetSubCards() {
 function selectCard(cardId) {
     resetSubCards();
 
+    // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
+    const card = cardId ?
+    document.querySelector(`#${cardId}`) : this.parentElement;
+
     // Sets the "active" attribute to the card
-    const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
-    // const card = this.parentElement;
     card.setAttribute("active", "");
     console.log(card);
 
@@ -119,6 +121,7 @@ function selectCard(cardId) {
 }
 
 popupSubCards.forEach(subCard => {
+    // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
     subCard.addEventListener("click", () => selectCard.call(subCard, null));
 });
 

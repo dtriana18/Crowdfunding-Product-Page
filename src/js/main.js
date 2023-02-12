@@ -71,6 +71,9 @@ function toggleMainPopup() {
     resetSubCards(); // Removes the "active" atribute from all cards
     mainPopupOverlayer.toggleAttribute("show");
     mainPopup.toggleAttribute("show");
+
+    // Every time the popup toggles, it goes all the way to the top
+    setTimeout(() => mainPopup.children[0].scrollIntoView(), 100);
 }
 
 [backButton, closeMainPopupIcon, mainPopupOverlayer].forEach(item => {

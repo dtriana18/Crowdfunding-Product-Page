@@ -232,7 +232,7 @@
 				<article id="noRewardCard" class="popup__card">
 					<section id="noReward" class="popup__card__content">
 						<section class="select">
-							<input class="select__input" type="radio" name="pledgePlan" value="no-reward">
+							<input class="select__input" type="radio" name="plan" value="no-reward">
 							<h3 class="select__title">Pledge with no reward</h3>
 						</section>
 
@@ -251,9 +251,11 @@
 									id=""
 									class="enter-pledge__text-input"
 									type="text"
-									name="pledgeValue"
+									name="value"
 									minlength="2"
 									maxlength="2"
+									required
+									disabled
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -265,7 +267,7 @@
 				<article id="bambooCard" class="popup__card">
 					<section id="bamboo" class="popup__card__content">
 						<section class="select">
-							<input class="select__input" type="radio" name="pledgePlan" value="bamboo-stand">
+							<input class="select__input" type="radio" name="plan" value="bamboo">
 							
 							<div class="select__content">
 								<h3 class="select__title">Bamboo Stand</h3>
@@ -293,10 +295,11 @@
 									id=""
 									class="enter-pledge__text-input"
 									type="text"
-									name="pledgeValue"
+									name="value"
 									minlength="2"
 									maxlength="2"
-									
+									required
+									disabled
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -308,7 +311,7 @@
 				<article id="blackCard" class="popup__card">
 					<section id="black" class="popup__card__content">
 						<section class="select">
-							<input class="select__input" type="radio" name="pledgePlan" value="black-edition-stand">
+							<input class="select__input" type="radio" name="plan" value="black">
 							
 							<div class="select__content">
 								<h3 class="select__title">Black Edition Stand</h3>
@@ -336,10 +339,11 @@
 									id=""
 									class="enter-pledge__text-input"
 									type="text"
-									name="pledgeValue"
+									name="value"
 									minlength="2"
 									maxlength="2"
-									
+									required
+									disabled
 								>
 							</div>
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -351,7 +355,7 @@
 				<article id="mahoganyCard" class="popup__card">
 					<section id="mahogany" class="popup__card__content">
 						<section class="select">
-							<input class="select__input" type="radio" name="pledgePlan" value="mahogany-special-edition">
+							<input class="select__input" type="radio" name="plan" value="mahogany" disabled>
 							
 							<div class="select__content">
 								<h3 class="select__title">Mahogany Special Edition</h3>
@@ -379,13 +383,13 @@
 									id=""
 									class="enter-pledge__text-input"
 									type="text"
-									name="pledgeValue"
+									name="value"
 									minlength="2"
 									maxlength="2"
-									
+									disabled
 								>
 							</div>
-							<button class="enter-pledge__submit-button" type="submit">Continue</button>
+							<button class="enter-pledge__submit-button" type="submit" disabled>Continue</button>
 						</div>
 					</section>
 				</article>

@@ -93,6 +93,11 @@ function resetRadioInputs() {
     radioInputs.forEach(radio => radio.checked = false);
 }
 
+function resetPledgeInputs() {
+    const pledgeInputs = document.querySelectorAll(".enter-pledge__text-input");
+    pledgeInputs.forEach(input => input.setAttribute("disabled", ""));
+}
+
 // Removes the "active" attribute from all previous sub cards
 function resetSubCards() {
     const subCards = document.querySelectorAll(".popup__card");
@@ -101,6 +106,7 @@ function resetSubCards() {
 
 // Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
 function selectCard(cardId) {
+    resetPledgeInputs();
     resetSubCards();
 
     // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
@@ -114,8 +120,10 @@ function selectCard(cardId) {
     const cardRadio = card.querySelector(".select__input");
     cardRadio.checked = true;
 
-    // Focus the pledge input
+    // Focus the pledge input and removes "disabled" attribute
     const pledgeInput = card.querySelector(".enter-pledge__text-input");
+    pledgeInput.removeAttribute("disabled");
+
     setTimeout(() => pledgeInput.focus(), 500);
 
     // Scrolls the card into the visible area of the popup
@@ -124,7 +132,10 @@ function selectCard(cardId) {
 
 popupSubCards.forEach(subCard => {
     // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
-    subCard.addEventListener("click", () => selectCard.call(subCard, null));
+
+    if (subCard.id !== "mahogany") {
+        subCard.addEventListener("click", () => selectCard.call(subCard, null));
+    }
 });
 
 // ========== FOCUSING PLEDGE INPUT ==========

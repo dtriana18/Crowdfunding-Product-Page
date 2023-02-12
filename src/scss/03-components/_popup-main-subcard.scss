@@ -9,7 +9,7 @@
 
     transition: border 300ms, outline 300ms;
 
-    &:hover {
+    &:hover:not(#mahoganyCard) {
         outline-color: rgba(#000000, 40%);
     }
 
@@ -111,5 +111,18 @@
     &__text {
         font-size: pxToRem(15);
         color: $gray;
+    }
+}
+
+// DISABLED CARD
+#mahoganyCard {
+    opacity: 50%;
+    
+    #mahogany{
+        cursor: auto;
+    }
+
+    input[type="radio"] {
+        cursor: auto;
     }
 }

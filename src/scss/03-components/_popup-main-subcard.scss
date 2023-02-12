@@ -41,6 +41,10 @@
     outline: 1px solid transparent;
     border: 2px solid $cyan;
 
+    &:hover:not(#mahoganyCard) {
+        outline-color: transparent;
+    }
+
     .enter-pledge {
         height: 140px;
         border-top-color: rgba(#000000, 15%);

@@ -97,12 +97,12 @@ function resetSubCards() {
 }
 
 // Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
-function selectCard() {
+function selectCard(cardId) {
     resetSubCards();
 
     // Sets the "active" attribute to the card
-    // const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
-    const card = this.parentElement;
+    const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
+    // const card = this.parentElement;
     card.setAttribute("active", "");
     console.log(card);
 
@@ -119,12 +119,12 @@ function selectCard() {
 }
 
 popupSubCards.forEach(subCard => {
-    subCard.addEventListener("click", selectCard);
+    subCard.addEventListener("click", () => selectCard.call(subCard, null));
 });
 
-// setTimeout(() => {
-//     selectCard(null, "bambooCard");
-// }, 3000)
+setTimeout(() => {
+    selectCard("bambooCard");
+}, 3000)
 
 
 // ========== FOCUSING PLEDGE INPUT ==========

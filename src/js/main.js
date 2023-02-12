@@ -106,7 +106,6 @@ function selectCard(cardId) {
 
     // Sets the "active" attribute to the card
     card.setAttribute("active", "");
-    console.log(card);
 
     // Checks the radio input
     const cardRadio = card.querySelector(".select__input");
@@ -125,11 +124,6 @@ popupSubCards.forEach(subCard => {
     subCard.addEventListener("click", () => selectCard.call(subCard, null));
 });
 
-setTimeout(() => {
-    selectCard("bambooCard");
-}, 3000)
-
-
 // ========== FOCUSING PLEDGE INPUT ==========
 
 const pledgeInputsWrappers = document.querySelectorAll(".enter-pledge__input-wrapper");
@@ -139,4 +133,18 @@ pledgeInputsWrappers.forEach(inputWrapper => {
     inputWrapper.addEventListener("click", () => {
         inputWrapper.querySelector("input").focus()
     });
+});
+
+// ========== OPEN POPUP AND SELECT PLEDGE WITH "SELECT REWARD" BUTTONS ==========
+
+const selectBambooButton = document.querySelector("#selectBambooButton");
+selectBambooButton.addEventListener("click", () => {
+    toggleMainPopup();
+    selectCard("bambooCard");
+});
+
+const selectBlackButton = document.querySelector("#selectBlackButton");
+selectBlackButton.addEventListener("click", () => {
+    toggleMainPopup();
+    selectCard("blackCard");
 });

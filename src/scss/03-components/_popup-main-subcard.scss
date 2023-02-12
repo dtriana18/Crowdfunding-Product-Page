@@ -9,6 +9,10 @@
 
     transition: border 300ms, outline 300ms;
 
+    &:hover {
+        outline-color: rgba(#000000, 50%);
+    }
+
     &__content {
         cursor: pointer;
 

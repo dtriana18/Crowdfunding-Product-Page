@@ -56,7 +56,7 @@
 
         transition: border-color 300ms;
 
-        &[focus] {
+        &:focus-within {
             border-color: $cyan;
         }
     } 

@@ -6,6 +6,9 @@ function getElementsFromIds(...ids) {
     return ids.map(id => document.querySelector("#" + id));
 }
 
+
+
+
 // ========== TOGGLE MOBILE MENU ==========
 
 const menuElements = getElementsFromIds("mobileMenu", "menuDarkOverlayer", "hamburguerMenuIcon", "closeMenuIcon");
@@ -39,7 +42,6 @@ window.addEventListener("resize", manageMenuEventListeners);
 
 
 
-
 // ========== BOOKMARK BUTTON ==========
 
 const bookmarkButton = document.querySelector("#bookmarkButton");
@@ -53,7 +55,6 @@ function toggleBookmarkButton() {
 }
 
 bookmarkButton.addEventListener("click", toggleBookmarkButton);
-
 
 
 
@@ -79,10 +80,9 @@ function toggleMainPopup() {
 
 
 
-
 // ========== SELECT CARD ==========
 
-const allPopupSubCards = document.querySelectorAll(".popup__card__content");
+const popupSubCards = document.querySelectorAll(".popup__card__content");
 
 // Uncheck all radio buttons inside the sub cards
 function resetRadioInputs() {
@@ -116,43 +116,20 @@ function selectCard() {
     setTimeout(() => this.scrollIntoView({ behavior: "smooth" }), 150);
 }
 
-allPopupSubCards.forEach(subCard => {
+popupSubCards.forEach(subCard => {
     subCard.addEventListener("click", selectCard);
 });
 
 
 
 
+// ========== FOCUSING PLEDGE INPUT ==========
 
-// ========== FOCUSING PLEDGE TEXT INPUT ==========
+const pledgeInputsWrappers = document.querySelectorAll(".enter-pledge__input-wrapper");
 
-const allPledgeTextInputs = document.querySelectorAll(".enter-pledge__text-input");
-const allTextInputsWrapper = document.querySelectorAll(".enter-pledge__input-wrapper");
-
-// -----
-
-function inputWrapperClick() {
-    const textInput = this.querySelector(".enter-pledge__text-input");
-    textInput.focus();
-}
-
-allTextInputsWrapper.forEach(inputWrapper => {
-    inputWrapper.addEventListener("click", inputWrapperClick);
-});
-
-// -----
-
-function inputFocus() {
-    const inputWrapper = this.parentElement;
-    inputWrapper.setAttribute("focus", "");
-}
-
-function inputFocusOut() {
-    const inputWrapper = this.parentElement;
-    inputWrapper.removeAttribute("focus");
-}
-
-allPledgeTextInputs.forEach(input => {
-    input.addEventListener("focus", inputFocus);
-    input.addEventListener("focusout", inputFocusOut);
+// When the pledgeInputsWrapper is clicked, the focus will be set to the pledge input.
+pledgeInputsWrappers.forEach(inputWrapper => {
+    inputWrapper.addEventListener("click", () => {
+        inputWrapper.querySelector("input").focus()
+    });
 });

@@ -165,3 +165,9 @@ selectBlackButton.addEventListener("click", () => {
     toggleMainPopup();
     selectCard("blackCard");
 });
+
+// ========== INPUT VALIDATION ==========
+
+"Solo numeros enteros"
+"Tener un maximo de caracteres"
+"Un valor minimo y uno maximo"

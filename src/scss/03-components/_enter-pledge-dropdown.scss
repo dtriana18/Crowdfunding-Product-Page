@@ -45,8 +45,6 @@
     }
 
     &__input-wrapper {
-        cursor: pointer;
-        
         display: flex;
         column-gap: 8px;
         max-width: 100px;
@@ -58,6 +56,10 @@
 
         &:focus-within:not(#noRewardInputWrapper) {
             border-color: $cyan;
+        }
+
+        &:not(#noRewardInputWrapper) {
+            cursor: pointer;
         }
     } 
 

@@ -124,7 +124,10 @@ function selectCard(cardId) {
     const pledgeInput = card.querySelector(".enter-pledge__pledge-input");
     pledgeInput.removeAttribute("disabled");
 
-    setTimeout(() => pledgeInput.focus(), 500);
+    // For not focusing readonly inputs
+    if (!pledgeInput.hasAttribute("readonly")) {
+        setTimeout(() => pledgeInput.focus(), 500);
+    }
 
     // Scrolls the card into the visible area of the popup
     setTimeout(() => card.scrollIntoView({ behavior: "smooth" }), 150);

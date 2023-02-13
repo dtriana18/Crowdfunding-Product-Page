@@ -56,7 +56,7 @@
 
         transition: border-color 300ms;
 
-        &:focus-within {
+        &:focus-within:not(#noRewardInputWrapper) {
             border-color: $cyan;
         }
     } 

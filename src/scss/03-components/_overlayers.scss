@@ -29,7 +29,7 @@
     }
 }
 
-.popup-overlayer {
+.main-overlayer {
     @extend %overlayer;
 
     z-index: $z-3;

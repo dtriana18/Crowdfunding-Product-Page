@@ -11,7 +11,7 @@ function getElementsFromIds(...ids) {
 
 // ========== TOGGLE MOBILE MENU ==========
 
-const menuElements = getElementsFromIds("mobileMenu", "menuDarkOverlayer", "hamburguerMenuIcon", "closeMenuIcon");
+const menuElements = getElementsFromIds("mobileMenu", "mobileMenuOverlayer", "hamburguerMenuIcon", "closeMenuIcon");
 
 function toggleMobileMenu() {
     menuElements.forEach(item => {
@@ -62,21 +62,21 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 // ========== OPEN MAIN POPUP ==========
 
 const backButton = document.querySelector("#backButton");
-const mainPopupOverlayer = document.querySelector("#mainPopupOverlayer");
+const mainOverlayer = document.querySelector("#mainOverlayer");
 const mainPopup = document.querySelector("#mainPopup");
 const closeMainPopupIcon = document.querySelector("#closeMainPopupIcon");
 
 function toggleMainPopup() {
     resetRadioInputs(); // Uncheck all radio buttons
     resetSubCards(); // Removes the "active" atribute from all cards
-    mainPopupOverlayer.toggleAttribute("show");
+    mainOverlayer.toggleAttribute("show");
     mainPopup.toggleAttribute("show");
 
     // Every time the popup toggles, it goes all the way to the top
     setTimeout(() => mainPopup.children[0].scrollIntoView(), 100);
 }
 
-[backButton, closeMainPopupIcon, mainPopupOverlayer].forEach(item => {
+[backButton, closeMainPopupIcon, mainOverlayer].forEach(item => {
     item.addEventListener("click", toggleMainPopup)
 });
 

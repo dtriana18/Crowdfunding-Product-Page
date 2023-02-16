@@ -28,7 +28,7 @@
         align-items: baseline;
     }
 
-    &__list {
+    &__menu {
         // MENU HIDDEN AND TRANSITIONS
         visibility: hidden;
         opacity: 0;
@@ -69,7 +69,6 @@
             flex-direction: row;
             column-gap: 32px;
 
-
             // STYLES
             font-size: pxToRem(13);
             background-color: transparent;
@@ -80,28 +79,16 @@
     &__link {
         position: relative;
 
-        &__a {
-            display: block;
-            padding: 24px;
+        @include mq(tablet) {
+            padding: 0;
 
-            &:focus {
-                background-color: rgba(#2F2F2F, 10%);
-            }
-
-            @include mq(tablet) {
-                padding: 0;
-                padding-bottom: 6px;
-
-                &:focus-visible {
-                    padding: 0;
-                    border-radius: 8px;
-                    outline: 2px dashed $white;
-                    outline-offset: 12px;
-                }
+            &:hover::after {
+                // For underline from left to rigth animation
+                transform: scaleX(100%);
             }
         }
 
-        // To only add border bottom to the first 2 links
+        // To only add border bottom to the first 2 links on moblie menu
         &:nth-child(-n+2) {
             border-bottom: 1px solid rgba(#2F2F2F, 10%);
 
@@ -126,11 +113,24 @@
             transition: transform 300ms;
         }
 
-        @include mq(tablet) {
-            padding: 0;
+        &__a {
+            display: block;
+            padding: 24px;
 
-            &:hover::after {
-                transform: scaleX(100%);
+            &:focus {
+                background-color: rgba(#2F2F2F, 10%);
+            }
+
+            @include mq(tablet) {
+                padding: 0;
+                padding-bottom: 6px;
+
+                &:focus-visible {
+                    padding: 0;
+                    border-radius: 8px;
+                    outline: 2px dashed $white;
+                    outline-offset: 12px;
+                }
             }
         }
     }
@@ -140,7 +140,7 @@
     }
 }
 
-// JS FUNCTIONALLITY
+// DISPLAYS ICONS AND MAKES THE MOBILE MENU VISIBLE WHEN THE "SHOW" ATTRIBUTE IS ADDED (JS).
 
 .navbar {
     &__menu-icon[show], &__close-icon[show] {
@@ -152,12 +152,14 @@
         }
     }
 
-    &__list[show] {
+    &__menu[show] {
         visibility: visible;    
         opacity: 1;
         transform: scale(1) translateY(0);
     }
 }
+
+// 3D ROTATION ANIMATION FOR THE MOBILE MENU ICONS.
 
 @keyframes showIcon {
     from { 

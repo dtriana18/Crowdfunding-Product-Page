@@ -21,9 +21,7 @@ function toggleMobileMenu() {
 
 // This function removes eventListeners on devices with a viewport width larger than 720px. It allows us to turn the event listeners on and off when the screen size changes.
 function manageMenuEventListeners() {
-    const method = window.innerWidth > 720 ?
-    "removeEventListener"
-    : "addEventListener";
+    const method = window.innerWidth > 720 ? "removeEventListener" : "addEventListener";
 
     /* TOGGLE MENU WHEN CLICKING
         1. The haburguer or close menu icon.

@@ -1,27 +1,16 @@
 @use "../01-utilities" as *;
 
 %overlayer {
-    visibility: hidden;
-    opacity: 0;
-
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
+    visibility: hidden;
+    opacity: 0;
     
     transition: visibility 500ms, opacity 500ms;
-}
-
-.mobile-menu-overlayer {
-    @extend %overlayer;
-
-    z-index: $z-1;
-    background: linear-gradient(to bottom, #000000, rgba(#000000, 0%));
-
-    @include mq(tablet) {
-        display: none;
-    }
 
     &[show] {
         visibility: visible;
@@ -29,14 +18,18 @@
     }
 }
 
+.mobile-menu-overlayer {
+    @extend %overlayer;
+    z-index: $z-1;
+    background: linear-gradient(to bottom, #000000, rgba(#000000, 0%));
+
+    @include mq(tablet) {
+        display: none;
+    }
+}
+
 .main-overlayer {
     @extend %overlayer;
-
     z-index: $z-3;
     background: #000000;
-
-    &[show] {
-        visibility: visible;
-        opacity: 0.5;
-    }
 }

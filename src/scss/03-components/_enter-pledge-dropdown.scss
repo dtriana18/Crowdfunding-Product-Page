@@ -55,12 +55,12 @@
 
         transition: border-color 300ms;
 
-        &:focus-within:not(#noRewardInputWrapper) {
-            border-color: $cyan;
-        }
-
         &:not(#noRewardInputWrapper) {
             cursor: pointer;
+        }
+        
+        &:focus-within:not(#noRewardInputWrapper) {
+            border-color: $cyan;
         }
     } 
 

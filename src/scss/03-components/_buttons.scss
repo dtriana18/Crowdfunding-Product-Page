@@ -27,9 +27,4 @@ button {
             background-color: $dark-cyan;
         }
     }
-
-    &[disabled] {
-        background-color: rgba($dark-gray, 50%);
-        cursor: auto;
-    }
 }

@@ -133,7 +133,12 @@ function selectCard(cardId) {
 
 popupSubCards.forEach(subCard => {
     // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
-    subCard.addEventListener("click", () => selectCard.call(subCard, null));
+
+    const isDisabled = subCard.parentElement.hasAttribute("disabled");
+
+    if (!isDisabled) {
+        subCard.addEventListener("click", () => selectCard.call(subCard, null));
+    }
 });
 
 // ========== FOCUSING PLEDGE INPUT ==========
@@ -149,16 +154,34 @@ pledgeInputsWrappers.forEach(inputWrapper => {
 
 // ========== OPEN POPUP AND SELECT PLEDGE WITH "SELECT REWARD" BUTTONS ==========
 
-const selectBambooButton = document.querySelector("#selectBambooButton");
-selectBambooButton.addEventListener("click", () => {
-    toggleMainPopup();
-    selectCard("bambooCard");
-});
+const selectCardsButtons = getElementsFromIds("selectBambooButton", "selectBlackButton", "selectMahoganyButton");
 
-const selectBlackButton = document.querySelector("#selectBlackButton");
-selectBlackButton.addEventListener("click", () => {
-    toggleMainPopup();
-    selectCard("blackCard");
+selectCardsButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        toggleMainPopup();
+
+        let cardId = "";
+
+        switch (button.id) {
+            case "selectBambooButton":
+                cardId = "bambooCard"
+                break;
+
+            case "selectBlackButton":
+                cardId = "blackCard"
+                break;
+
+            case "selectMahoganyButton":
+                cardId = "mahoganyCard"
+                break;
+        }
+
+        selectCard(cardId);
+
+        console.log(button);
+        console.log(button.id);
+        console.log(cardId);
+    });
 });
 
 // ========== INPUT VALIDATION ==========

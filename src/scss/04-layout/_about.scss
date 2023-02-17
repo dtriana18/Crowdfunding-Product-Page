@@ -46,6 +46,12 @@
 
     &[disabled] {
         opacity: 50%;
+
+        & button {
+            pointer-events: none;
+            background-color: rgba($dark-gray, 50%);
+            cursor: auto;
+        }
     }
 
     @include mq(tablet) {

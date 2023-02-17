@@ -37,7 +37,7 @@
     }
 }
 
-.popup__card[active]:not([disabled]) {
+.popup__card[active] {
     outline: 1px solid transparent;
     border: 2px solid $cyan;
 
@@ -52,6 +52,22 @@
         @include mq(tablet) {
             height: 96px;
         }
+    }
+}
+
+// DISABLED CARD
+.popup__card[disabled] {
+    $this: ".popup__card";
+
+    opacity: 50%;
+    
+    #{$this}__content {
+        cursor: auto;
+    }
+
+    input[type="radio"] {
+        cursor: auto;
+        pointer-events: none;
     }
 }
 
@@ -115,21 +131,5 @@
     &__text {
         font-size: pxToRem(15);
         color: $gray;
-    }
-}
-
-// DISABLED CARD
-.popup__card[disabled] {
-    $this: ".popup__card";
-
-    opacity: 50%;
-    
-    #{$this}__content {
-        cursor: auto;
-    }
-
-    input[type="radio"] {
-        cursor: auto;
-        pointer-events: none;
     }
 }

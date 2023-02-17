@@ -44,18 +44,6 @@ img {
     height: 100%;
 }
 
-button {
-    display: block;
-    border: none;
-    outline: transparent;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-button[disabled] {
-    cursor: auto;
-}
-
 span {
     display: block;
 }

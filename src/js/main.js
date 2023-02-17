@@ -133,10 +133,7 @@ function selectCard(cardId) {
 
 popupSubCards.forEach(subCard => {
     // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
-
-    if (subCard.id !== "mahogany") {
-        subCard.addEventListener("click", () => selectCard.call(subCard, null));
-    }
+    subCard.addEventListener("click", () => selectCard.call(subCard, null));
 });
 
 // ========== FOCUSING PLEDGE INPUT ==========

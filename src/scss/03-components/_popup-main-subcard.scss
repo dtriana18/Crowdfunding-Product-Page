@@ -9,7 +9,7 @@
 
     transition: border 300ms, outline 300ms;
 
-    &:hover:not(#mahoganyCard) {
+    &:hover:not([disabled]) {
         outline-color: rgba(#000000, 40%);
     }
 
@@ -37,11 +37,11 @@
     }
 }
 
-.popup__card[active] {
+.popup__card[active]:not([disabled]) {
     outline: 1px solid transparent;
     border: 2px solid $cyan;
 
-    &:hover:not(#mahoganyCard) {
+    &:hover {
         outline-color: transparent;
     }
 
@@ -119,14 +119,17 @@
 }
 
 // DISABLED CARD
-#mahoganyCard {
+.popup__card[disabled] {
+    $this: ".popup__card";
+
     opacity: 50%;
     
-    #mahogany{
+    #{$this}__content {
         cursor: auto;
     }
 
     input[type="radio"] {
         cursor: auto;
+        pointer-events: none;
     }
 }

@@ -12,8 +12,8 @@
 
     height: 90%;
     overflow-y: scroll;
-    scroll-padding-top: 64px;
-
+    scroll-padding-block: 64px;
+    
     width: min(85%, 730px);
     background-color: $white;
     border-radius: 8px;

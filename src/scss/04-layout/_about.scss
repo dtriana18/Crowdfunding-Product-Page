@@ -120,7 +120,8 @@
     &__button {
         @extend %button--primary;
 
+        width: min(100%, 157px);
+        padding-block: 16px;
         font-size: pxToRem(14);
-        padding: 16px 32px;
     }
 }

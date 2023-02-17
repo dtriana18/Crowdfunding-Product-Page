@@ -18,11 +18,12 @@ button {
 }
 
 %button {
-    border-radius: 999px;
+    border-radius: 32px;
     font-weight: $bold;
     color: $white;
 
     &--primary {
+        @extend %button;
         background-color: $cyan;
         transition: background-color 300ms;
 
@@ -32,6 +33,7 @@ button {
     }
 
     &--disabled {
+        @extend %button;
         background-color: rgba($dark-gray, 50%);
     }
 }

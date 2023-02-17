@@ -1,4 +1,5 @@
 @use "../01-utilities" as *;
+@use "../03-components/buttons" as *;
 
 .support {
     @extend %section-card-layout;
@@ -34,6 +35,19 @@
             margin-bottom: 40px;
         }
     }
+
+    &__back-button {
+        @extend %button--primary;
+
+        width: min(100%, 214px);
+        font-size: pxToRem(16);
+        padding: 18px;
+        
+        @include mq(tablet) {
+            width: auto;
+            padding-inline: 42px;
+        }
+    }
 }
 
 .support__buttons {
@@ -41,6 +55,5 @@
     justify-content: space-between;
     align-items: center;
     column-gap: 9px;
-
 }
 

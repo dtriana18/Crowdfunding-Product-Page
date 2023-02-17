@@ -177,10 +177,6 @@ selectCardsButtons.forEach(button => {
         }
 
         selectCard(cardId);
-
-        console.log(button);
-        console.log(button.id);
-        console.log(cardId);
     });
 });
 

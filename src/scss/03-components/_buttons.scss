@@ -7,10 +7,6 @@ button {
     background-color: transparent;
     cursor: pointer;
 
-    &[disabled] {
-        cursor: auto;
-    }
-
     &:focus-visible {
         outline: 2px dashed $dark-gray;
         outline-offset: 4px;
@@ -32,8 +28,8 @@ button {
         }
     }
 
-    &--disabled {
-        @extend %button;
+    &[disabled] {
         background-color: rgba($dark-gray, 50%);
+        cursor: auto;
     }
 }

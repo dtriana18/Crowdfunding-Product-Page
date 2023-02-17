@@ -90,7 +90,7 @@
 
         // To only add border bottom to the first 2 links on moblie menu
         &:nth-child(-n+2) {
-            border-bottom: 1px solid rgba(#2F2F2F, 10%);
+            border-bottom: 1px solid rgba($dark-gray, 10%);
 
             @include mq(tablet) {
                 border-bottom: none;
@@ -118,7 +118,7 @@
             padding: 24px;
 
             &:focus {
-                background-color: rgba(#2F2F2F, 10%);
+                background-color: rgba($dark-gray, 10%);
             }
 
             @include mq(tablet) {

@@ -56,7 +56,7 @@
         transition: border-color 300ms;
 
         &[error] {
-            border-color: #B33C3C;
+            border-color: rgba(#B33C3C, 80%);
             animation-name: shakeInputError;
             animation-duration: 500ms;
 

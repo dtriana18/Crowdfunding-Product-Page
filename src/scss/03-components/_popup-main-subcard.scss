@@ -139,7 +139,7 @@
     font-size: pxToRem(12);
     font-weight: $bold;
     line-height: 1.5;
-    color: #B33C3C;
+    color: rgba(#B33C3C, 80%);
 
     opacity: 0;
     &[active] {

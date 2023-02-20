@@ -121,7 +121,6 @@ function selectCard(cardId) {
     // Focus the pledge input and removes "disabled" attribute
     const pledgeInput = card.querySelector(".enter-pledge__pledge-input");
     pledgeInput.removeAttribute("disabled");
-    pledgeInput.addEventListener("input", validatePledgeInput);
 
     // For not focusing readonly inputs
     if (!pledgeInput.hasAttribute("readonly")) {
@@ -181,9 +180,72 @@ selectCardsButtons.forEach(button => {
     });
 });
 
+// ========== FORM VALIDATION ==========
+
+const popupForm = document.querySelector("#popupForm");
+
+function validateForm(event) {
+    event.preventDefault();
+
+    // Selects the current pledge input by finding an <input type="text"/> that has not the "disabled" attribute. All pledge inputs are "disabled" by default, and the "disabled" attribute is only removed when the card is "active" or "selected".
+    const currentPledgeInput = popupForm.querySelector(`input[type="text"]:not([disabled])`);
+    const value = Number(currentPledgeInput.value);
+    const minValue = Number(currentPledgeInput.getAttribute("min-value"));
+    const maxValue = Number(currentPledgeInput.getAttribute("max-value"));
+
+    console.log(`${typeof value} ${value}`);
+    console.log(`${typeof minValue} ${minValue}`);
+    console.log(`${typeof maxValue} ${maxValue}`);
+
+    if (value === "") {
+        console.log("Please, enter a pledge");
+        return;
+    }
+
+    if (value < minValue) {
+        console.log(`Plese enter a higher pledge, the minimun for this plan is ${minValue}.`);
+        return;
+    }
+
+    if (value > maxValue) {
+        console.log(`The maximum pledge for this plan is ${maxValue}. If you would like to donate more, consider selecting another plan for greater benefits.`);
+        return;
+    }
+
+    console.log("Thanks for supporting us!!!");
+
+
+    /*
+    switch (true) {
+        case value === "":
+            console.log("Please enter a pledge");
+            break;
+
+        case value < minValue:
+            console.log(`Please enter a higher pledge, the minimum for this plan is ${minValue}.`);
+            break;
+
+        case value > maxValue:
+            console.log(`The maximum pledge for this plan is ${maxValue}. If you would like to donate more, consider selecting another plan for greater benefits.`);
+            break;
+
+        default:
+            console.log("Thanks for supporting us!!!");
+    }
+    */
+}
+
+popupForm.addEventListener("submit", validateForm);
+
 // ========== INPUT VALIDATION ==========
+
+const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
 
 function validatePledgeInput() {
     // Replaces any non-numeric characters in the input field with an empty string, ensuring that only numbers can be displayed in the input.
     this.value = this.value.replace(/[^0-9]+/g, "");
 }
+
+pledgeInputs.forEach(input => {
+    input.addEventListener("input", validatePledgeInput);
+});

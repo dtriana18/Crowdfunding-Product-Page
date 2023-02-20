@@ -91,9 +91,25 @@ function resetRadioInputs() {
     radioInputs.forEach(radio => radio.checked = false);
 }
 
+// Disables all pledge input fields and resets their values to empty, except for the "no reward" input field (heart).
 function resetPledgeInputs() {
     const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
-    pledgeInputs.forEach(input => input.setAttribute("disabled", ""));
+    pledgeInputs.forEach(input => {
+        input.parentElement.removeAttribute("error");
+
+        input.setAttribute("disabled", "");
+
+        // Resets the inputs values to empty, except for the "no reward" input field (heart).
+        if (!input.hasAttribute("readonly")) {
+            setTimeout(() => input.value = "", 150);
+        }
+    });
+}
+
+// Clears the textContent of all error messages on the sub cards.
+function resetErrorMessagues() {
+    const errorMessagues = document.querySelectorAll(".error-msg");
+    errorMessagues.forEach(error => error.textContent = "");
 }
 
 // Removes the "active" attribute from all previous sub cards
@@ -104,6 +120,7 @@ function resetSubCards() {
 
 // Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
 function selectCard(cardId) {
+    resetErrorMessagues();
     resetPledgeInputs();
     resetSubCards();
 
@@ -187,52 +204,47 @@ const popupForm = document.querySelector("#popupForm");
 function validateForm(event) {
     event.preventDefault();
 
+    const noRewardCard = popupForm.querySelector("#noRewardCard");
+
+    if (noRewardCard.hasAttribute("active")) {
+        console.log("Thanks for supporting us!!!");
+        return;
+    }
+
+    const errorMessague = popupForm.querySelector(".popup__card[active] .error-msg");
+    errorMessague.removeAttribute("active");
+
     // Selects the current pledge input by finding an <input type="text"/> that has not the "disabled" attribute. All pledge inputs are "disabled" by default, and the "disabled" attribute is only removed when the card is "active" or "selected".
     const currentPledgeInput = popupForm.querySelector(`input[type="text"]:not([disabled])`);
+    currentPledgeInput.parentElement.removeAttribute("error");
+
     const value = Number(currentPledgeInput.value);
     const minValue = Number(currentPledgeInput.getAttribute("min-value"));
     const maxValue = Number(currentPledgeInput.getAttribute("max-value"));
 
-    console.log(`${typeof value} ${value}`);
-    console.log(`${typeof minValue} ${minValue}`);
-    console.log(`${typeof maxValue} ${maxValue}`);
-
-    if (value === "") {
-        console.log("Please, enter a pledge");
-        return;
+    if (value === 0 || value < minValue || value > maxValue) {
+        setTimeout(() => currentPledgeInput.parentElement.setAttribute("error", ""), 150);
+        setTimeout(() => currentPledgeInput.focus(), 1000);
+        setTimeout(() => errorMessague.setAttribute("active", ""), 150);
     }
 
-    if (value < minValue) {
-        console.log(`Plese enter a higher pledge, the minimun for this plan is ${minValue}.`);
-        return;
-    }
-
-    if (value > maxValue) {
-        console.log(`The maximum pledge for this plan is ${maxValue}. If you would like to donate more, consider selecting another plan for greater benefits.`);
-        return;
-    }
-
-    console.log("Thanks for supporting us!!!");
-
-
-    /*
     switch (true) {
-        case value === "":
-            console.log("Please enter a pledge");
+        case value === 0:
+            errorMessague.textContent = "Please enter a pledge";
             break;
 
         case value < minValue:
-            console.log(`Please enter a higher pledge, the minimum for this plan is ${minValue}.`);
+            errorMessague.textContent = `Please enter a higher pledge, the minimum for this plan is ${minValue}.`;
             break;
 
         case value > maxValue:
-            console.log(`The maximum pledge for this plan is ${maxValue}. If you would like to donate more, consider selecting another plan for greater benefits.`);
+            errorMessague.textContent = `The maximum pledge for this plan is ${maxValue}. If you would like to donate more, consider selecting another plan for greater benefits.`;
             break;
 
         default:
             console.log("Thanks for supporting us!!!");
+            errorMessague.textContent = "";
     }
-    */
 }
 
 popupForm.addEventListener("submit", validateForm);

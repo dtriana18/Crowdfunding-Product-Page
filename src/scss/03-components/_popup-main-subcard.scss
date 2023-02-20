@@ -135,11 +135,15 @@
 
 // ERROR MESAGGE
 .error-msg {
-    display: none;
-
     margin-top: 24px;
     font-size: pxToRem(12);
     font-weight: $bold;
     line-height: 1.5;
-    color: #d93025;
+    color: #B33C3C;
+
+    opacity: 0;
+    &[active] {
+        transition: opacity 300ms;
+        opacity: 1;
+    }
 }

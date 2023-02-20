@@ -183,19 +183,7 @@ selectCardsButtons.forEach(button => {
 
 // ========== INPUT VALIDATION ==========
 
-let inputValue;
-
-function validatePledgeInput(event) {
-    const character = event.data;
-    const isNumber = new RegExp("^[0-9]+$").test(character);
-
-    inputValue = this.value;
-
-    if (!isNumber) {
-        inputValue.slice(0, -1)
-        // this.value = inputValue;
-    }
-
-    console.log(`Input ${this.value}`)
-    console.log(`String ${inputValue}`)
+function validatePledgeInput() {
+    // Replaces any non-numeric characters in the input field with an empty string, ensuring that only numbers can be displayed in the input.
+    this.value = this.value.replace(/[^0-9]+/g, "");
 }

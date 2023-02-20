@@ -107,9 +107,9 @@ function resetPledgeInputs() {
 }
 
 // Clears the textContent of all error messages on the sub cards.
-function resetErrorMessagues() {
-    const errorMessagues = document.querySelectorAll(".error-msg");
-    errorMessagues.forEach(error => error.textContent = "");
+function resetErrorMessages() {
+    const errorMessages = document.querySelectorAll(".error-msg");
+    errorMessages.forEach(error => error.textContent = "");
 }
 
 // Removes the "active" attribute from all previous sub cards
@@ -120,7 +120,7 @@ function resetSubCards() {
 
 // Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
 function selectCard(cardId) {
-    resetErrorMessagues();
+    resetErrorMessages();
     resetPledgeInputs();
     resetSubCards();
 
@@ -211,8 +211,8 @@ function validateForm(event) {
         return;
     }
 
-    const errorMessague = popupForm.querySelector(".popup__card[active] .error-msg");
-    errorMessague.removeAttribute("active");
+    const errorMessage = popupForm.querySelector(".popup__card[active] .error-msg");
+    errorMessage.removeAttribute("active");
 
     // Selects the current pledge input by finding an <input type="text"/> that has not the "disabled" attribute. All pledge inputs are "disabled" by default, and the "disabled" attribute is only removed when the card is "active" or "selected".
     const currentPledgeInput = popupForm.querySelector(`input[type="text"]:not([disabled])`);
@@ -225,25 +225,25 @@ function validateForm(event) {
     if (value === 0 || value < minValue || value > maxValue) {
         setTimeout(() => currentPledgeInput.parentElement.setAttribute("error", ""), 150);
         setTimeout(() => currentPledgeInput.focus(), 1000);
-        setTimeout(() => errorMessague.setAttribute("active", ""), 150);
+        setTimeout(() => errorMessage.setAttribute("active", ""), 150);
     }
 
     switch (true) {
         case value === 0:
-            errorMessague.textContent = "Please enter a pledge";
+            errorMessage.textContent = "Please enter your pledge";
             break;
 
         case value < minValue:
-            errorMessague.textContent = `Please enter a higher pledge, the minimum for this plan is ${minValue}.`;
+            errorMessage.textContent = `Please enter a higher pledge, the minimum for this plan is ${minValue}.`;
             break;
 
         case value > maxValue:
-            errorMessague.textContent = `The maximum pledge for this plan is ${maxValue}. If you would like to donate more, consider selecting another plan for greater benefits.`;
+            errorMessage.textContent = `The maximum pledge for this plan is ${maxValue}. If you would like to donate more, please select another plan for greater benefits.`;
             break;
 
         default:
             console.log("Thanks for supporting us!!!");
-            errorMessague.textContent = "";
+            errorMessage.textContent = "";
     }
 }
 

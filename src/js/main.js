@@ -121,6 +121,7 @@ function selectCard(cardId) {
     // Focus the pledge input and removes "disabled" attribute
     const pledgeInput = card.querySelector(".enter-pledge__pledge-input");
     pledgeInput.removeAttribute("disabled");
+    pledgeInput.addEventListener("input", validatePledgeInput);
 
     // For not focusing readonly inputs
     if (!pledgeInput.hasAttribute("readonly")) {
@@ -182,6 +183,19 @@ selectCardsButtons.forEach(button => {
 
 // ========== INPUT VALIDATION ==========
 
-"Solo numeros enteros"
-"Tener un maximo de caracteres"
-"Un valor minimo y uno maximo"
+let inputValue;
+
+function validatePledgeInput(event) {
+    const character = event.data;
+    const isNumber = new RegExp("^[0-9]+$").test(character);
+
+    inputValue = this.value;
+
+    if (!isNumber) {
+        inputValue.slice(0, -1)
+        // this.value = inputValue;
+    }
+
+    console.log(`Input ${this.value}`)
+    console.log(`String ${inputValue}`)
+}

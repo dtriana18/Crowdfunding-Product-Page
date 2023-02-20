@@ -120,13 +120,17 @@ function resetSubCards() {
 
 // Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
 function selectCard(cardId) {
-    resetErrorMessages();
-    resetPledgeInputs();
-    resetSubCards();
-
     // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
     const card = cardId ?
     document.querySelector(`#${cardId}`) : this.parentElement;
+
+    if (card.hasAttribute("active")) {
+        return;
+    }
+
+    resetErrorMessages();
+    resetPledgeInputs();
+    resetSubCards();
 
     // Sets the "active" attribute to the card
     card.setAttribute("active", "");

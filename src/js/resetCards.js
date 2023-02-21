@@ -1,5 +1,5 @@
 // Removes the "active" attribute from all previous sub cards
-function resetSubCards() {
+function resetActiveCards() {
     const subCards = document.querySelectorAll(".popup__card");
     subCards.forEach(card => card.removeAttribute("active"));
 }
@@ -32,7 +32,7 @@ function resetErrorMessages() {
 }
 
 export function resetAllSubcards() {
-    resetSubCards();
+    resetActiveCards();
     resetRadioInputs();
     resetPledgeInputs();
     resetErrorMessages();

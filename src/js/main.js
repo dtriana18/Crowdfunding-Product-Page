@@ -1,10 +1,6 @@
-/**
- * @param  {...string} ids - Elements ids 
- * @returns {HTMLElement[]}
-*/
-function getElementsFromIds(...ids) {
-    return ids.map(id => document.querySelector("#" + id));
-}
+import { getElementsFromIds } from "./utils/utils.js";
+import { resetAllSubcards } from "./resetCards.js";
+
 
 
 
@@ -57,74 +53,6 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 
 
-// ========== RESETING POPUP SUBCARDS ==========
-
-function resetAllSubCards() {
-    // Uncheck all radio buttons inside the sub cards
-    const radioInputs = document.querySelectorAll(".select__input");
-    radioInputs.forEach(radio => radio.checked = false);
-
-
-    // Disables all pledge input fields and resets their values to empty, except for the "no reward" input field (heart).
-    const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
-    pledgeInputs.forEach(input => {
-        input.parentElement.removeAttribute("error");
-
-        input.setAttribute("disabled", "");
-
-        // Resets the inputs values to empty, except for the "no reward" input field (heart).
-        if (!input.hasAttribute("readonly")) {
-            setTimeout(() => input.value = "", 100);
-        }
-    });
-
-
-    // Clears the textContent of all error messages on the sub cards.
-    const errorMessages = document.querySelectorAll(".error-msg");
-    errorMessages.forEach(error => error.textContent = "");
-
-
-    // Removes the "active" attribute from all previous sub cards
-    const subCards = document.querySelectorAll(".popup__card");
-    subCards.forEach(card => card.removeAttribute("active"));
-}
-
-// Uncheck all radio buttons inside the sub cards
-function resetRadioInputs() {
-    const radioInputs = document.querySelectorAll(".select__input");
-    radioInputs.forEach(radio => radio.checked = false);
-}
-
-// Disables all pledge input fields and resets their values to empty, except for the "no reward" input field (heart).
-function resetPledgeInputs() {
-    const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
-    pledgeInputs.forEach(input => {
-        input.parentElement.removeAttribute("error");
-
-        input.setAttribute("disabled", "");
-
-        // Resets the inputs values to empty, except for the "no reward" input field (heart).
-        if (!input.hasAttribute("readonly")) {
-            setTimeout(() => input.value = "", 100);
-        }
-    });
-}
-
-// Clears the textContent of all error messages on the sub cards.
-function resetErrorMessages() {
-    const errorMessages = document.querySelectorAll(".error-msg");
-    errorMessages.forEach(error => error.textContent = "");
-}
-
-// Removes the "active" attribute from all previous sub cards
-function resetSubCards() {
-    const subCards = document.querySelectorAll(".popup__card");
-    subCards.forEach(card => card.removeAttribute("active"));
-}
-
-
-
-
 
 // ========== OPEN MAIN POPUP ==========
 
@@ -134,12 +62,13 @@ const mainPopup = document.querySelector("#mainPopup");
 const closeMainPopupIcon = document.querySelector("#closeMainPopupIcon");
 
 function toggleMainPopup() {
-    resetRadioInputs(); // Uncheck all radio buttons
-    resetSubCards(); // Removes the "active" atribute from all cards
+    // Resets all the cards
+    resetAllSubcards();
+
     mainOverlayer.toggleAttribute("show");
     mainPopup.toggleAttribute("show");
 
-    // Every time the popup toggles, it goes all the way to the top
+    // Every time the popup toggles, it scrolls all the way to the top
     setTimeout(() => mainPopup.children[0].scrollIntoView(), 100);
 }
 
@@ -159,16 +88,11 @@ function selectCard(cardId) {
     // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
     const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
 
-
     // If the card is already "active", it means that it is courrently selected so it hasn't to be selected anymore
-    if (card.hasAttribute("active")) {
-        return;
-    }
+    if (card.hasAttribute("active")) return;
 
     // Resets all the cards
-    resetErrorMessages();
-    resetPledgeInputs();
-    resetSubCards();
+    resetAllSubcards();
 
     // Sets the "active" attribute to the card
     card.setAttribute("active", "");

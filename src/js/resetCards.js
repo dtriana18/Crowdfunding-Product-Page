@@ -31,6 +31,12 @@ function resetErrorMessages() {
     errorMessages.forEach(error => error.textContent = "");
 }
 
+/**
+    1. Removes the "active" attribute from all previous sub cards
+    2. Uncheck all radio buttons inside the sub cards
+    3. Disables all pledge input fields and resets their values to empty, except for the "no reward" input field (heart).
+    4. Clears the textContent of all error messages on the sub cards.
+*/
 export function resetAllSubcards() {
     resetActiveCards();
     resetRadioInputs();

@@ -57,6 +57,45 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 
 
+// ========== RESETING POPUP SUBCARDS ==========
+
+// Uncheck all radio buttons inside the sub cards
+function resetRadioInputs() {
+    const radioInputs = document.querySelectorAll(".select__input");
+    radioInputs.forEach(radio => radio.checked = false);
+}
+
+// Disables all pledge input fields and resets their values to empty, except for the "no reward" input field (heart).
+function resetPledgeInputs() {
+    const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
+    pledgeInputs.forEach(input => {
+        input.parentElement.removeAttribute("error");
+
+        input.setAttribute("disabled", "");
+
+        // Resets the inputs values to empty, except for the "no reward" input field (heart).
+        if (!input.hasAttribute("readonly")) {
+            setTimeout(() => input.value = "", 100);
+        }
+    });
+}
+
+// Clears the textContent of all error messages on the sub cards.
+function resetErrorMessages() {
+    const errorMessages = document.querySelectorAll(".error-msg");
+    errorMessages.forEach(error => error.textContent = "");
+}
+
+// Removes the "active" attribute from all previous sub cards
+function resetSubCards() {
+    const subCards = document.querySelectorAll(".popup__card");
+    subCards.forEach(card => card.removeAttribute("active"));
+}
+
+
+
+
+
 // ========== OPEN MAIN POPUP ==========
 
 const backButton = document.querySelector("#backButton");
@@ -85,49 +124,18 @@ function toggleMainPopup() {
 
 const popupSubCards = document.querySelectorAll(".popup__card__content");
 
-// Uncheck all radio buttons inside the sub cards
-function resetRadioInputs() {
-    const radioInputs = document.querySelectorAll(".select__input");
-    radioInputs.forEach(radio => radio.checked = false);
-}
-
-// Disables all pledge input fields and resets their values to empty, except for the "no reward" input field (heart).
-function resetPledgeInputs() {
-    const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
-    pledgeInputs.forEach(input => {
-        input.parentElement.removeAttribute("error");
-
-        input.setAttribute("disabled", "");
-
-        // Resets the inputs values to empty, except for the "no reward" input field (heart).
-        if (!input.hasAttribute("readonly")) {
-            setTimeout(() => input.value = "", 150);
-        }
-    });
-}
-
-// Clears the textContent of all error messages on the sub cards.
-function resetErrorMessages() {
-    const errorMessages = document.querySelectorAll(".error-msg");
-    errorMessages.forEach(error => error.textContent = "");
-}
-
-// Removes the "active" attribute from all previous sub cards
-function resetSubCards() {
-    const subCards = document.querySelectorAll(".popup__card");
-    subCards.forEach(card => card.removeAttribute("active"));
-}
-
 // Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
 function selectCard(cardId) {
     // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
-    const card = cardId ?
-    document.querySelector(`#${cardId}`) : this.parentElement;
+    const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
 
+
+    // If the card is already "active", it means that it is courrently selected so it hasn't to be selected anymore
     if (card.hasAttribute("active")) {
         return;
     }
 
+    // Resets all the cards
     resetErrorMessages();
     resetPledgeInputs();
     resetSubCards();
@@ -162,6 +170,10 @@ popupSubCards.forEach(subCard => {
     }
 });
 
+
+
+
+
 // ========== FOCUSING PLEDGE INPUT ==========
 
 const pledgeInputsWrappers = document.querySelectorAll(".enter-pledge__input-wrapper");
@@ -172,6 +184,10 @@ pledgeInputsWrappers.forEach(inputWrapper => {
         inputWrapper.querySelector("input").focus()
     });
 });
+
+
+
+
 
 // ========== OPEN POPUP AND SELECT PLEDGE WITH "SELECT REWARD" BUTTONS ==========
 
@@ -200,6 +216,10 @@ selectCardsButtons.forEach(button => {
         selectCard(cardId);
     });
 });
+
+
+
+
 
 // ========== FORM VALIDATION ==========
 
@@ -252,6 +272,10 @@ function validateForm(event) {
 }
 
 popupForm.addEventListener("submit", validateForm);
+
+
+
+
 
 // ========== INPUT VALIDATION ==========
 

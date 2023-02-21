@@ -36,6 +36,7 @@ window.addEventListener("resize", manageMenuEventListeners);
 
 
 
+
 // ========== BOOKMARK BUTTON ==========
 
 const bookmarkButton = document.querySelector("#bookmarkButton");
@@ -62,7 +63,6 @@ const mainPopup = document.querySelector("#mainPopup");
 const closeMainPopupIcon = document.querySelector("#closeMainPopupIcon");
 
 function toggleMainPopup() {
-    // Resets all the cards
     resetAllSubcards();
 
     mainOverlayer.toggleAttribute("show");
@@ -79,29 +79,41 @@ function toggleMainPopup() {
 
 
 
+
 // ========== SELECT CARD ==========
 
 const popupSubCards = document.querySelectorAll(".popup__card__content");
 
-// Sets "active" attribute to the card, check radio input, set focus to the pledge input and scrolls the card to the visible area of the popup
+/*
+    1. Sets the "active" attribute to the card.
+    2. Checks radio input.
+    3. Set focus to the pledge input.
+    4. Scrolls the card to the visible area of the popup
+*/
 function selectCard(cardId) {
     // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
     const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
 
-    // If the card is already "active", it means that it is courrently selected so it hasn't to be selected anymore
+    // If the card is already "active", it has already been selected and doesn't need to be selected again
     if (card.hasAttribute("active")) return;
 
-    // Resets all the cards
+    // Resets all subcards
     resetAllSubcards();
 
-    // Sets the "active" attribute to the card
+
+
+
+    /* ===== Actual card selection ===== */
+
+
+    // 1. Sets the "active" attribute to the card
     card.setAttribute("active", "");
 
-    // Checks the radio input
+    // 2. Checks the radio input
     const cardRadio = card.querySelector(".select__input");
     cardRadio.checked = true;
 
-    // Focus the pledge input and removes "disabled" attribute
+    // 3. Focus the pledge input and removes "disabled" attribute
     const pledgeInput = card.querySelector(".enter-pledge__pledge-input");
     pledgeInput.removeAttribute("disabled");
 
@@ -110,16 +122,16 @@ function selectCard(cardId) {
         setTimeout(() => pledgeInput.focus(), 500);
     }
 
-    // Scrolls the card into the visible area of the popup
+    // 4. Scrolls the card into the visible area of the popup
     setTimeout(() => card.scrollIntoView({ behavior: "smooth" }), 150);
 }
 
 popupSubCards.forEach(subCard => {
-    // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
-
+    // For only being able to select none "disabled" (out of stock) cards.
     const isDisabled = subCard.parentElement.hasAttribute("disabled");
 
     if (!isDisabled) {
+        // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
         subCard.addEventListener("click", () => selectCard.call(subCard, null));
     }
 });
@@ -143,10 +155,11 @@ pledgeInputsWrappers.forEach(inputWrapper => {
 
 
 
-// ========== OPEN POPUP AND SELECT PLEDGE WITH "SELECT REWARD" BUTTONS ==========
+// ========== OPEN POPUP AND SELECT SUBCARD WITH THE "SELECT REWARD" BUTTONS ==========
 
 const selectCardsButtons = getElementsFromIds("selectBambooButton", "selectBlackButton", "selectMahoganyButton");
 
+// Selects certain popup subcards based on the ID of the button that triggered the event. The specific subcards are identified by their own unique IDs.
 selectCardsButtons.forEach(button => {
     button.addEventListener("click", () => {
         toggleMainPopup();
@@ -231,15 +244,15 @@ popupForm.addEventListener("submit", validateForm);
 
 
 
-// ========== INPUT VALIDATION ==========
+// ========== RESTRICT PLEDGE INPUTS TO NUMERICAL VALUES (INTEGERS) ==========
 
 const pledgeInputs = document.querySelectorAll(".enter-pledge__pledge-input");
 
-function validatePledgeInput() {
+function setNumericFormat() {
     // Replaces any non-numeric characters in the input field with an empty string, ensuring that only numbers can be displayed in the input.
     this.value = this.value.replace(/[^0-9]+/g, "");
 }
 
 pledgeInputs.forEach(input => {
-    input.addEventListener("input", validatePledgeInput);
+    input.addEventListener("input", setNumericFormat);
 });

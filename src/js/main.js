@@ -195,47 +195,79 @@ const popupForm = document.querySelector("#popupForm");
 function validateForm(event) {
     event.preventDefault();
 
+
+
+
+    /* ========== NO REWARD CARD ========== */
+
+
     const noRewardCard = popupForm.querySelector("#noRewardCard");
 
+    // If the selected card is the "no reward" card, submit the form and return because it doesn't need any validation
     if (noRewardCard.hasAttribute("active")) {
         console.log("Thanks for supporting us!!!");
         return;
     }
 
-    const errorMessage = popupForm.querySelector(".popup__card[active] .error-msg");
-    errorMessage.removeAttribute("active");
+
+
+
+    /* ========== OTHER CARDS ========== */
+
 
     // Selects the current pledge input by finding an <input type="text"/> that has not the "disabled" attribute. All pledge inputs are "disabled" by default, and the "disabled" attribute is only removed when the card is "active" or "selected".
     const currentPledgeInput = popupForm.querySelector(`input[type="text"]:not([disabled])`);
-    currentPledgeInput.parentElement.removeAttribute("error");
+
+    const currentPledgeInputWrapper = currentPledgeInput.parentElement;
+    currentPledgeInputWrapper.removeAttribute("error");
+
+    const errorMessage = popupForm.querySelector(".popup__card[active] .error-msg");
+    errorMessage.removeAttribute("active");
+
+
+
+
+    /* ========== VALIDATIONS ========== */
+
 
     const value = Number(currentPledgeInput.value);
     const minValue = Number(currentPledgeInput.getAttribute("min-value"));
     const maxValue = Number(currentPledgeInput.getAttribute("max-value"));
 
-    if (value === 0 || value < minValue || value > maxValue) {
-        setTimeout(() => currentPledgeInput.parentElement.setAttribute("error", ""), 150);
-        setTimeout(() => currentPledgeInput.focus(), 1000);
+    const isEmpty = value === 0;
+    const notEnough = value < minValue;
+    const tooMuch = value > maxValue;
+
+    // If any error, sets the error attribute to input wrapper for "shaking" animation, activates de error messague for the "flashy" animation / transition and refocus de input
+    if (isEmpty || notEnough || tooMuch) {
+        // "SetTimeOuts" are for delaying the animation for a better UX
+        setTimeout(() => currentPledgeInputWrapper.setAttribute("error", ""), 150);
         setTimeout(() => errorMessage.setAttribute("active", ""), 150);
+        setTimeout(() => currentPledgeInput.focus(), 1000);
     }
 
+    let msg = "";
+    
+    // Depending on the error, sets a different error message ("msg");
     switch (true) {
-        case value === 0:
-            errorMessage.textContent = "Please enter your pledge";
+        case isEmpty:
+            msg = "Please enter your pledge";
             break;
 
-        case value < minValue:
-            errorMessage.textContent = `Please enter a higher pledge, the minimum for this plan is ${minValue}.`;
+        case notEnough:
+            msg = `Please enter a higher pledge, the minimum for this plan is ${minValue}.`;
             break;
 
-        case value > maxValue:
-            errorMessage.textContent = `The maximum pledge for this plan is ${maxValue}. If you would like to donate more, please select another plan for greater benefits.`;
+        case tooMuch:
+            msg = `The maximum pledge for this plan is ${maxValue}. If you would like to donate more, please select another plan for greater benefits.`;
             break;
 
         default:
+            msg = "";
             console.log("Thanks for supporting us!!!");
-            errorMessage.textContent = "";
     }
+
+    errorMessage.textContent = msg;
 }
 
 popupForm.addEventListener("submit", validateForm);

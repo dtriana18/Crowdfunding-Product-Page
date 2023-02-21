@@ -56,16 +56,14 @@
         transition: border-color 300ms;
 
         &[error] {
-            border-color: rgba(#B33C3C, 80%);
-            animation-name: shakeInputError;
-            animation-duration: 500ms;
+            animation: shakeInputError 500ms forwards;
 
             @keyframes shakeInputError {
-                0% { transform: translateX(0); }
-                25% { transform: translateX(-4px); }
-                50% { transform: translateX(4px); }
-                75% { transform: translateX(-4px); }
-                100% { transform: translateX(0); }
+                0% { transform: translateX(0) }
+                25% { transform: translateX(-4px) }
+                50% { transform: translateX(4px) }
+                75% { transform: translateX(-4px) }
+                100% { transform: translateX(0) }
             }
         }
 

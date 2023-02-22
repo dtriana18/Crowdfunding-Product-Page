@@ -1,5 +1,5 @@
-import { getElementsFromIds } from "./utils/utils.js";
-import { resetAllSubcards } from "./resetCards.js";
+import { getElementsFromIds } from "./utils/utils";
+import { resetAllSubcards } from "./resetCards";
 
 
 

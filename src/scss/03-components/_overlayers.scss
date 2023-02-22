@@ -33,3 +33,12 @@
     z-index: $z-3;
     background: #000000;
 }
+
+.thanks-overlayer {
+    @extend %overlayer;
+    z-index: $z-3;
+    background: #000000;
+
+    visibility: visible;
+    opacity: 0.6;
+}

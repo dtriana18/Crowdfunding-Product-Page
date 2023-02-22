@@ -1,0 +1,72 @@
+@use "../01-utilities/" as *;
+@use "../03-components/buttons" as *;
+
+.thanks {
+    z-index: $z-max;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+    width: min(85%, 540px);
+    background-color: $white;
+    border-radius: 8px;
+    padding: 32px 24px;
+    text-align: center;
+
+    // visibility: hidden;
+    // opacity: 0;
+    // transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%);
+
+    transition-property: all;
+    transition-duration: 500ms;
+    
+    &[show] {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    @include mq(tablet) {
+        padding: 48px;
+    }
+
+    &__check-icon {
+        width: 64px;
+        margin-inline: auto;
+        margin-bottom: 24px;
+
+        @include mq(tablet) {
+            width: 90px;
+            margin-bottom: 48px;
+            font-size: pxToRem(24);
+        }
+    }
+
+    &__title {
+        margin-bottom: 24px;
+        font-size: pxToRem(18);
+        font-weight: $bold;
+        color: $black;
+
+        @include mq(tablet) {
+            margin-bottom: 16px;
+            font-size: pxToRem(24);
+        }
+    }
+
+    &__text {
+        margin-bottom: 32px;
+    }
+
+    &__button {
+        @extend %button--primary;
+        margin-bottom: 8px;
+        margin-inline: auto;
+        padding: 16px 32px;
+
+        @include mq(tablet) {
+            margin-bottom: 0;
+        }
+    }
+}

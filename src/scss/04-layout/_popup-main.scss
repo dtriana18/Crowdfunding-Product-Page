@@ -25,11 +25,13 @@
     transition-duration: 500ms;
 
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
         display: none;
     }
 
     &[show] {
+        transition-delay: 300ms;
         visibility: visible;
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);

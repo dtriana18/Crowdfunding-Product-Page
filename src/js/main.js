@@ -210,7 +210,7 @@ function sendForm() {
     setTimeout(() => {
         toggleMainPopup();
         toggleThanksPopup();
-    }, 500)
+    }, 300)
 
     console.log("Thanks for supporting us!!!");
 }

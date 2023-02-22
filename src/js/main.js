@@ -207,8 +207,11 @@ selectCardsButtons.forEach(button => {
 // ========== FORM VALIDATION ==========
 
 function sendForm() {
-    setTimeout(toggleMainPopup, 300);
-    setTimeout(toggleThanksPopup, 800);
+    setTimeout(() => {
+        toggleMainPopup();
+        toggleThanksPopup();
+    }, 500)
+
     console.log("Thanks for supporting us!!!");
 }
 

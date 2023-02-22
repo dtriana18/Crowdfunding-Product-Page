@@ -3,7 +3,7 @@
 
 .thanks {
     will-change: visibility, opacity, transform;
-    
+
     z-index: $z-max;
     position: fixed;
     top: 50%;
@@ -23,6 +23,8 @@
     transition-duration: 500ms;
     
     &[show] {
+        transition-delay: 500ms;
+
         visibility: visible;
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);

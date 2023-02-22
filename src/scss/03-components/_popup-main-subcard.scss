@@ -1,6 +1,8 @@
 @use "../01-utilities" as *;
 
 .popup__card {
+    will-change: height;
+
     position: relative;
     border-radius: 8px;
     outline: 1px solid rgba(#000000, 15%);

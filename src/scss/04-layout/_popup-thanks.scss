@@ -2,6 +2,8 @@
 @use "../03-components/buttons" as *;
 
 .thanks {
+    will-change: visibility, opacity, transform;
+    
     z-index: $z-max;
     position: fixed;
     top: 50%;
@@ -13,12 +15,11 @@
     padding: 32px 24px;
     text-align: center;
 
-    // visibility: hidden;
-    // opacity: 0;
-    // transform: translate(-50%, -50%) scale(0);
-    transform: translate(-50%, -50%);
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
 
-    transition-property: all;
+    transition-property: visibility, opacity, transform;
     transition-duration: 500ms;
     
     &[show] {

@@ -1,6 +1,8 @@
 @use "../01-utilities" as *;
 
 %overlayer {
+    will-change: visibility, opacity;
+
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +40,4 @@
     @extend %overlayer;
     z-index: $z-3;
     background: #000000;
-
-    visibility: visible;
-    opacity: 0.6;
 }

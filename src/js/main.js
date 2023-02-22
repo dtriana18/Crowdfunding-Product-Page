@@ -55,7 +55,7 @@ bookmarkButton.addEventListener("click", toggleBookmarkButton);
 
 
 
-// ========== OPEN MAIN POPUP ==========
+// ========== TOGGLE MAIN POPUP ==========
 
 const backButton = document.querySelector("#backButton");
 const mainOverlayer = document.querySelector("#mainOverlayer");
@@ -75,6 +75,23 @@ function toggleMainPopup() {
 [backButton, closeMainPopupIcon, mainOverlayer].forEach(item => {
     item.addEventListener("click", toggleMainPopup)
 });
+
+
+
+
+
+// ========== TOGGLE THANKS POPUP ==========
+
+const thanksPopup = document.querySelector("#thanksPopup");
+const thanksOverlayer = document.querySelector("#thanksOverlayer");
+const gotItButton = document.querySelector("#gotItButton");
+
+function toggleThanksPopup() {
+    thanksOverlayer.toggleAttribute("show");
+    thanksPopup.toggleAttribute("show");
+}
+
+gotItButton.addEventListener("click", toggleThanksPopup);
 
 
 
@@ -187,6 +204,17 @@ selectCardsButtons.forEach(button => {
 
 
 
+// ========== FORM VALIDATION ==========
+
+function sendForm() {
+    setTimeout(toggleMainPopup, 300);
+    setTimeout(toggleThanksPopup, 800);
+    console.log("Thanks for supporting us!!!");
+}
+
+
+
+
 
 // ========== FORM VALIDATION ==========
 
@@ -203,7 +231,7 @@ function validateForm(event) {
 
     // If the "no reward" card is selected, thanks the user and returns without validation (not required)
     if (noRewardCard.hasAttribute("active")) {
-        console.log("Thanks for supporting us!!!");
+        sendForm();
         return;
     }
 
@@ -263,7 +291,7 @@ function validateForm(event) {
 
         default:
             msg = "";
-            console.log("Thanks for supporting us!!!");
+            sendForm();
     }
 
     // Sets the errorMessage textContent to the value of "msg" and displays it on the card

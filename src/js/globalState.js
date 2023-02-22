@@ -1,11 +1,13 @@
+"Debo conocer el 'plan' y el 'value' que se envio. Con base a esos valores, debo modificar el estado global, para actualizar los cambios (unitsLeft, totalMoney, totalBackers). Luego tengo que leer el estado global y actualizar el DOM"
+
 const globalState = {
-    totalMoney: 10000,
-    totalBackers: 99,
-    
-    supportNoReward: false,
+    totalDonations: 89914,
+    targetAmount: 100000,
+    totalBackers: 5007,
+
     unitsLeft: {
-        bamboo: 0,
-        black: 0,
+        bammbo: 101,
+        black: 64,
         mahogany: 0,
-    },
+    }
 }

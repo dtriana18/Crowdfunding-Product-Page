@@ -1,4 +1,5 @@
-import {addCommasToNumber} from "./utils/utils";
+import { addCommasToNumber } from "./utils/utils";
+import { selectCard } from "./selectCard";
 
 
 // Total donations and backers from stats section

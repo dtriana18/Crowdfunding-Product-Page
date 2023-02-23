@@ -1,7 +1,7 @@
 import { getElementsFromIds } from "./utils/utils";
 import { resetAllSubcards } from "./resetCards";
 import { globalState } from "./globalState";
-import { pl } from "date-fns/locale";
+import { selectCard } from "./selectCard";
 
 
 
@@ -96,11 +96,6 @@ function toggleThanksPopup() {
 gotItButton.addEventListener("click", toggleThanksPopup);
 
 
-
-
-
-// ========== SELECT CARD ==========
-
 const popupSubCards = document.querySelectorAll(".popup__card__content");
 
 /*
@@ -109,41 +104,6 @@ const popupSubCards = document.querySelectorAll(".popup__card__content");
     3. Set focus to the pledge input.
     4. Scrolls the card to the visible area of the popup
 */
-function selectCard(cardId) {
-    // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
-    const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;
-
-    // If the card is already "active", it has already been selected and doesn't need to be selected again
-    if (card.hasAttribute("active")) return;
-
-    // Resets all subcards
-    resetAllSubcards();
-
-
-
-
-    /* ===== Actual card selection ===== */
-
-
-    // 1. Sets the "active" attribute to the card
-    card.setAttribute("active", "");
-
-    // 2. Checks the radio input
-    const cardRadio = card.querySelector(".select__input");
-    cardRadio.checked = true;
-
-    // 3. Focus the pledge input and removes "disabled" attribute
-    const pledgeInput = card.querySelector(".enter-pledge__pledge-input");
-    pledgeInput.removeAttribute("disabled");
-
-    // For not focusing readonly inputs
-    if (!pledgeInput.hasAttribute("readonly")) {
-        setTimeout(() => pledgeInput.focus(), 500);
-    }
-
-    // 4. Scrolls the card into the visible area of the popup
-    setTimeout(() => card.scrollIntoView({ behavior: "smooth" }), 150);
-}
 
 popupSubCards.forEach(subCard => {
     // For only being able to select none "disabled" (out of stock) cards.
@@ -154,8 +114,6 @@ popupSubCards.forEach(subCard => {
         subCard.addEventListener("click", () => selectCard.call(subCard, null));
     }
 });
-
-
 
 
 

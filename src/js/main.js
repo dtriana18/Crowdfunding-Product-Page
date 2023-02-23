@@ -96,24 +96,6 @@ function toggleThanksPopup() {
 gotItButton.addEventListener("click", toggleThanksPopup);
 
 
-const popupSubCards = document.querySelectorAll(".popup__card__content");
-
-/*
-    1. Sets the "active" attribute to the card.
-    2. Checks radio input.
-    3. Set focus to the pledge input.
-    4. Scrolls the card to the visible area of the popup
-*/
-
-popupSubCards.forEach(subCard => {
-    // For only being able to select none "disabled" (out of stock) cards.
-    const isDisabled = subCard.parentElement.hasAttribute("disabled");
-
-    if (!isDisabled) {
-        // Sets 'cardId' as 'null' and the 'subCard' which triggered the event as the context (this) when invoking selectCard()
-        subCard.addEventListener("click", () => selectCard.call(subCard, null));
-    }
-});
 
 
 

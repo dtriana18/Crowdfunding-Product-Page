@@ -22,7 +22,6 @@ const mahoganyCards = document.querySelectorAll("[mahogany-card]");
 // Popup Cards Only
 const popupSubCards = document.querySelectorAll(".popup__card__content");
 
-
 class GlobalState {
     constructor() {
         this._totalDonations = 50000; // 89914
@@ -34,7 +33,7 @@ class GlobalState {
             noReward: 1,
             bamboo: 101,
             black: 64,
-            mahogany: 0,
+            mahogany: 1,
         }
 
         // To render all data when the instance is created
@@ -44,23 +43,19 @@ class GlobalState {
     // Va en el render, desactiva la carta si sus unidades faltantes son 0
     // La funcion se ejecuta cada vez que se renderize el DOM
     _activateCards() {
-        // Remover todos los eventListener de las popup card
-
         // Evaluar cuantas unidades disponiples hay en el estado global, dependiendo de eso añadir atributtos disabled a las cards
         if (this._unitsLeft.bamboo === 0) {
             bambooCards.forEach(card => card.setAttribute("disabled", ""));
-        }
-
-        if (this._unitsLeft.black === 0) {
+        } else if (this._unitsLeft.black === 0) {
             blackCards.forEach(card => card.setAttribute("disabled", ""));
-        }
-
-        if (this._unitsLeft.mahogany === 0) {
+        } else if (this._unitsLeft.mahogany === 0) {
             mahoganyCards.forEach(card => card.setAttribute("disabled", ""));
         }
 
         // Añadir eventListeners solo a las cards que no tengan el attributo disabled
-        
+        popupSubCards.forEach(card => {
+            card.addEventListener("click", () => selectCard.call(card, null));
+        });
     }
 
 

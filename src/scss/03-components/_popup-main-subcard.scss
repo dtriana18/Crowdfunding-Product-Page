@@ -58,6 +58,8 @@
 
 // DISABLED CARD
 .popup__card[disabled] {
+    pointer-events: none;
+
     $this: ".popup__card";
 
     opacity: 50%;

@@ -5,6 +5,12 @@ import { resetAllSubcards } from "./resetCards";
 
 // ========== SELECT CARD ==========
 
+/*
+    1. Sets the "active" attribute to the card.
+    2. Checks radio input.
+    3. Set focus to the pledge input.
+    4. Scrolls the card to the visible area of the popup
+*/
 export function selectCard(cardId) {
     // Determine the card element to be selected using either its cardId with document.querySelector or the parent element of the triggered event with this.parentElement.
     const card = cardId ? document.querySelector(`#${cardId}`) : this.parentElement;

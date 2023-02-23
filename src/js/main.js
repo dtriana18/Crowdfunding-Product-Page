@@ -205,9 +205,10 @@ function sendForm(plan, value) {
     setTimeout(() => {
         toggleMainPopup();
         toggleThanksPopup();
+
         // Updates the global state depending on the plan selected and value entered, and renders de data into the DOM
-        globalState.updateGlobalState(plan, value);
-    }, 500)
+        globalState.updateGlobalState(plan, value)
+    }, 500);
 
     console.log("Thanks for supporting us!!!");
 }

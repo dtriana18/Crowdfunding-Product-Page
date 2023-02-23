@@ -1,25 +1,26 @@
-"Debo conocer el 'plan' y el 'value' que se envio. Con base a esos valores, debo modificar el estado global, para actualizar los cambios (unitsLeft, totalMoney, totalBackers). Luego tengo que leer el estado global y actualizar el DOM"
+import {addCommasToNumber} from "./utils/utils";
 
+
+// Total donations and backers from stats section
 const totalDonations = document.querySelector("#totalDonations");
 const totalBackers = document.querySelector("#totalBackers");
 
+// Progress bar
 const progressBar = document.querySelector(".progress-bar__fill");
 
+// Units left
 const bambooUnitsLeft = document.querySelectorAll("[bamboo-units-left]");
 const blackUnitsLeft = document.querySelectorAll("[black-units-left]");
 const mahoganyUnitsLeft = document.querySelectorAll("[mahogany-units-left]");
 
-// No necesito instanciar la clase, solo exportar sus metodos con esa propiedad que me permitia exportarlos isn necesidad de crear una instancia
-
 class GlobalState {
     constructor() {
-        this.totalDonations = 89914;
-        this.targetAmount = 100000;
-        this.totalBackers = 5007;
+        this._totalDonations = 89914;
+        this._totalBackers = 5007;
 
-        this.hasBacked = false;
+        this._hasUserBackedBefore = false;
     
-        this.unitsLeft = {
+        this._unitsLeft = {
             noReward: 1,
             bamboo: 101,
             black: 64,
@@ -27,57 +28,71 @@ class GlobalState {
         }
     }
 
-    // La idea es tener un estado global, tener una forma de modificarlo y luego tener un metodo para renderizar en el DOM toda la info del estado global
+
+    // UPDATE GLOBAL STATE DATA
 
     updateGlobalState(plan, value) {
         switch (plan) {
             case bamboo:
-                if (this.unitsLeft.bamboo !== 0) {
-                    this.unitsLeft.bamboo--;
+                if (this._unitsLeft.bamboo !== 0) {
+                    this._unitsLeft.bamboo--;
                 }
             break;
 
             case black:
-                if (this.unitsLeft.black !== 0) {
-                    this.unitsLeft.black--;
+                if (this._unitsLeft.black !== 0) {
+                    this._unitsLeft.black--;
                 }
             break;
 
             case mahogany:
-                if (this.unitsLeft.mahogany !== 0) {
-                    this.unitsLeft.mahogany--;
+                if (this._unitsLeft.mahogany !== 0) {
+                    this._unitsLeft.mahogany--;
                 }
+            break;
+
+            default:
             break;
         }
 
-        this.totalDonations += value;
+        "Tener cuidado con el no reward pledge, ya que añadiria $1, no 0"
+        this._totalDonations += value;
 
-        if (!this.hasBacked) {
-            this.hasBacked = true;
-            this.totalBackers++;
+        if (!this._hasUserBackedBefore) {
+            this._hasUserBackedBefore = true;
+            this._totalBackers++;
         }
 
-        render();
+        this._renderAll();
     }
 
-    renderProgressBar() {
-        const percentage = this.totalDonations / this.targetAmount;
-        progressBar.style.transform = `scale(${percentage.toFixed(2)})`;
+
+    // RENDER DOM
+
+    _renderStats() {
+        totalDonations.textContent = addCommasToNumber(this._totalDonations);
+        totalBackers.textContent = addCommasToNumber(this._totalBackers);
     }
 
-    renderStats() {
-        totalDonations.textContent = formatNumber(this.totalDonations);
-        totalBackers.textContent = formatNumber(this.totalBackers);
+    _renderProgressBar() {
+        // Total donations divided by the target amount
+        const percentage = (this._totalDonations / 100000).toFixed(2);
+        progressBar.style.transform = `scale(${percentage})`;
     }
 
-    // Talvez poner algun tipo de condicional para solo renderizar el que se haya modificado
-    renderUnitsLeft() {
-        bambooUnitsLeft.forEach(element => element.textContent = this.unitsLeft.bamboo);
-        blackUnitsLeft.forEach(element => element.textContent = this.unitsLeft.black);
-        mahoganyUnitsLeft.forEach(element => element.textContent = this.unitsLeft.mahogany);
+    _renderUnitsLeft() {
+        bambooUnitsLeft.forEach(element => element.textContent = this._unitsLeft.bamboo);
+        blackUnitsLeft.forEach(element => element.textContent = this._unitsLeft.black);
+        mahoganyUnitsLeft.forEach(element => element.textContent = this._unitsLeft.mahogany);
+    }
+
+    _renderAll() {
+        this._renderStats();
+        this._renderProgressBar();
+        this._renderUnitsLeft();
     }
 }
 
-function formatNumber(num) {
-    return num.toLocaleString('en-US', { decimal: ',' })
-}
+const globalState = new GlobalState();
+
+console.log(globalState);

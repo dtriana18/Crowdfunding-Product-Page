@@ -93,8 +93,4 @@
         transform-origin: left;
         transition: transform 500ms;
     }
-
-    &:hover &__fill {
-        transform: scaleX(100%);
-    }
 }

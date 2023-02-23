@@ -23,7 +23,8 @@
     transition-duration: 500ms;
     
     &[show] {
-        transition-delay: 500ms;
+        transition-timing-function: cubic-bezier(0.5, -1, 0.5, 1.5);
+        transition-delay: 800ms;
 
         visibility: visible;
         opacity: 1;

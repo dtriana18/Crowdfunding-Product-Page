@@ -23,15 +23,17 @@
 
     transition-property: visibility, opacity, transform;
     transition-duration: 500ms;
-
+    
     scrollbar-width: none;
-
+    
     &::-webkit-scrollbar {
         display: none;
     }
-
+    
     &[show] {
-        transition-delay: 300ms;
+        transition-timing-function: cubic-bezier(0.5, -1, 0.5, 1.5);
+        transition-delay: 150ms;
+        
         visibility: visible;
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);

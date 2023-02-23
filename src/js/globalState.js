@@ -15,7 +15,7 @@ const mahoganyUnitsLeft = document.querySelectorAll("[mahogany-units-left]");
 
 class GlobalState {
     constructor() {
-        this._totalDonations = 89914;
+        this._totalDonations = 50000; // 89914
         this._totalBackers = 5007;
 
         this._hasUserBackedBefore = false;
@@ -26,6 +26,9 @@ class GlobalState {
             black: 64,
             mahogany: 0,
         }
+
+        // To render all data when the instance is created
+        this._renderAll();
     }
 
 
@@ -77,7 +80,7 @@ class GlobalState {
     _renderProgressBar() {
         // Total donations divided by the target amount
         const percentage = (this._totalDonations / 100000).toFixed(2);
-        progressBar.style.transform = `scale(${percentage})`;
+        progressBar.style.transform = `scaleX(${percentage})`;
     }
 
     _renderUnitsLeft() {
@@ -93,6 +96,4 @@ class GlobalState {
     }
 }
 
-const globalState = new GlobalState();
-
-console.log(globalState);
+export const globalState = new GlobalState();

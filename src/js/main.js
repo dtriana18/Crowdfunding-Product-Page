@@ -1,5 +1,11 @@
 import { getElementsFromIds } from "./utils/utils";
 import { resetAllSubcards } from "./resetCards";
+import { globalState } from "./globalState";
+
+console.log("Hola")
+console.log(globalState)
+
+// globalState._renderAll();
 
 
 

@@ -159,7 +159,7 @@
 				</p>
 
 				<section class="about__cards-container">
-					<article class="about__card">
+					<article class="about__card" bamboo-card>
 						<div class="about__card__flex-desktop">
 							<h3 class="about__card__title">Bamboo Stand</h3>
 							<span class="about__card__price">Pledge $25 or more</span>
@@ -180,7 +180,7 @@
 						</div>
 					</article>
 
-					<article class="about__card">
+					<article class="about__card" black-card>
 						<div class="about__card__flex-desktop">
 							<h3 class="about__card__title">Black Edition Stand</h3>
 							<span class="about__card__price">Pledge $75 or more</span>
@@ -201,7 +201,7 @@
 						</div>
 					</article>
 
-					<article class="about__card">
+					<article class="about__card" mahogany-card>
 						<div class="about__card__flex-desktop">
 							<h3 class="about__card__title">Mahogany Special Edition</h3>
 							<span class="about__card__price">Pledge $200 or more</span>
@@ -255,7 +255,7 @@
 						<div class="enter-pledge__form">
 							<div id="noRewardInputWrapper" class="enter-pledge__input-wrapper">
 								<p class="enter-pledge__dollar-sign">❤️</p>
-								<input class="enter-pledge__pledge-input" type="text" name="value" value="1" readonly disabled>
+								<input class="enter-pledge__pledge-input" type="text" name="value" plan="noReward" value="1" readonly disabled>
 							</div>
 
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -264,7 +264,7 @@
 				</article>
 
 				<!-- BAMBOO STAND -->
-				<article id="bambooCard" class="popup__card">
+				<article id="bambooCard" class="popup__card" bamboo-card>
 					<section id="bamboo" class="popup__card__content">
 						<section class="select">
 							<input class="select__input" type="radio" name="plan" value="bamboo">
@@ -293,7 +293,7 @@
 						<div class="enter-pledge__form">
 							<div class="enter-pledge__input-wrapper">
 								<p class="enter-pledge__dollar-sign">$</p>
-								<input id="" class="enter-pledge__pledge-input" type="text" name="value" maxlength="2" placeholder="25" inputmode="numeric" min-value="25" max-value="74" disabled>
+								<input id="" class="enter-pledge__pledge-input" type="text" name="value" plan="bamboo" maxlength="2" placeholder="25" inputmode="numeric" min-value="25" max-value="74" disabled>
 							</div>
 
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -302,7 +302,7 @@
 				</article>
 
 				<!-- BLACK EDITION STAND -->
-				<article id="blackCard" class="popup__card">
+				<article id="blackCard" class="popup__card" black-card>
 					<section id="black" class="popup__card__content">
 						<section class="select">
 							<input class="select__input" type="radio" name="plan" value="black">
@@ -331,7 +331,7 @@
 						<div class="enter-pledge__form">
 							<div class="enter-pledge__input-wrapper">
 								<p class="enter-pledge__dollar-sign">$</p>
-								<input id="" class="enter-pledge__pledge-input" type="text" name="value" maxlength="3" placeholder="75" inputmode="numeric" min-value="75" max-value="199" disabled>
+								<input id="" class="enter-pledge__pledge-input" type="text" name="value" plan="black" maxlength="3" placeholder="75" inputmode="numeric" min-value="75" max-value="199" disabled>
 							</div>
 						
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>
@@ -340,7 +340,7 @@
 				</article>
 
 				<!-- MAHOGANY SPECIAL EDITION -->
-				<article id="mahoganyCard" class="popup__card">
+				<article id="mahoganyCard" class="popup__card" mahogany-card>
 					<section id="mahogany" class="popup__card__content">
 						<section class="select">
 							<input class="select__input" type="radio" name="plan" value="mahogany">
@@ -369,7 +369,7 @@
 						<div class="enter-pledge__form">
 							<div class="enter-pledge__input-wrapper">
 								<p class="enter-pledge__dollar-sign">$</p>
-								<input id="" class="enter-pledge__pledge-input" type="text" name="value" maxlength="3" placeholder="200" inputmode="numeric" min-value="200" max-value="999" disabled>
+								<input id="" class="enter-pledge__pledge-input" type="text" name="value" plan="mahogany" maxlength="3" placeholder="200" inputmode="numeric" min-value="200" max-value="999" disabled>
 							</div>
 
 							<button class="enter-pledge__submit-button" type="submit">Continue</button>

@@ -1,11 +1,7 @@
 import { getElementsFromIds } from "./utils/utils";
 import { resetAllSubcards } from "./resetCards";
 import { globalState } from "./globalState";
-
-console.log("Hola")
-console.log(globalState)
-
-// globalState._renderAll();
+import { pl } from "date-fns/locale";
 
 
 
@@ -212,15 +208,19 @@ selectCardsButtons.forEach(button => {
 
 // ========== FORM VALIDATION ==========
 
-function sendForm() {
+function sendForm(plan, value) {
     setTimeout(() => {
         toggleMainPopup();
         toggleThanksPopup();
     }, 300)
 
+    console.log(plan);
+    console.log(value);
+
+    globalState.updateGlobalState(plan, value);
+
     console.log("Thanks for supporting us!!!");
 }
-
 
 
 
@@ -233,14 +233,14 @@ function validateForm(event) {
     // Prevents the default form submission behavior to allow custom validation
     event.preventDefault();
 
-
+    
     /* ========== NO REWARD CARD ========== */
 
     const noRewardCard = popupForm.querySelector("#noRewardCard");
 
     // If the "no reward" card is selected, thanks the user and returns without validation (not required)
     if (noRewardCard.hasAttribute("active")) {
-        sendForm();
+        sendForm("noReward", 0);
         return;
     }
 
@@ -249,6 +249,7 @@ function validateForm(event) {
 
     // Selects the current pledge input by finding an <input type="text/> element that does not have the "disabled" attribute. All pledge inputs are disabled by default, and the "disabled" attribute is only removed when the card is "active" or "selected".
     const currentPledgeInput = popupForm.querySelector(`input[type="text"]:not([disabled])`);
+
 
     // Removes any previous error state from the pledge input's wrapper element
     const currentPledgeInputWrapper = currentPledgeInput.parentElement;
@@ -260,6 +261,9 @@ function validateForm(event) {
 
 
     /* ========== VALIDATIONS ========== */
+
+    // Plan selected (card)
+    const plan = currentPledgeInput.getAttribute("plan");
 
     // Converts the pledge value and min/max values to numbers for comparison
     const value = Number(currentPledgeInput.value);
@@ -300,7 +304,7 @@ function validateForm(event) {
 
         default:
             msg = "";
-            sendForm();
+            sendForm(plan, value);
     }
 
     // Sets the errorMessage textContent to the value of "msg" and displays it on the card

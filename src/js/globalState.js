@@ -13,6 +13,15 @@ const bambooUnitsLeft = document.querySelectorAll("[bamboo-units-left]");
 const blackUnitsLeft = document.querySelectorAll("[black-units-left]");
 const mahoganyUnitsLeft = document.querySelectorAll("[mahogany-units-left]");
 
+// About and popup Cards
+const bambooCards = document.querySelectorAll("[bamboo-card]");
+const blackCards = document.querySelectorAll("[black-card]");
+const mahoganyCards = document.querySelectorAll("[mahogany-card]");
+
+// Popup Cards Only
+const popupSubCards = document.querySelectorAll(".popup__card__content");
+
+
 class GlobalState {
     constructor() {
         this._totalDonations = 50000; // 89914
@@ -31,34 +40,49 @@ class GlobalState {
         this._renderAll();
     }
 
+    // Va en el render, desactiva la carta si sus unidades faltantes son 0
+    // La funcion se ejecuta cada vez que se renderize el DOM
+    _activateCards() {
+        // Remover todos los eventListener de las popup card
+
+        // Evaluar cuantas unidades disponiples hay en el estado global, dependiendo de eso añadir atributtos disabled a las cards
+        if (this._unitsLeft.bamboo === 0) {
+            bambooCards.forEach(card => card.setAttribute("disabled", ""));
+        }
+
+        if (this._unitsLeft.black === 0) {
+            blackCards.forEach(card => card.setAttribute("disabled", ""));
+        }
+
+        if (this._unitsLeft.mahogany === 0) {
+            mahoganyCards.forEach(card => card.setAttribute("disabled", ""));
+        }
+
+        // Añadir eventListeners solo a las cards que no tengan el attributo disabled
+        
+    }
+
 
     // UPDATE GLOBAL STATE DATA
 
     updateGlobalState(plan, value) {
         switch (plan) {
-            case bamboo:
-                if (this._unitsLeft.bamboo !== 0) {
-                    this._unitsLeft.bamboo--;
-                }
+            case "bamboo":
+                this._unitsLeft.bamboo--;
             break;
 
-            case black:
-                if (this._unitsLeft.black !== 0) {
-                    this._unitsLeft.black--;
-                }
+            case "black":
+                this._unitsLeft.black--;
             break;
 
-            case mahogany:
-                if (this._unitsLeft.mahogany !== 0) {
-                    this._unitsLeft.mahogany--;
-                }
+            case "mahogany":
+                this._unitsLeft.mahogany--;
             break;
 
             default:
             break;
         }
 
-        "Tener cuidado con el no reward pledge, ya que añadiria $1, no 0"
         this._totalDonations += value;
 
         if (!this._hasUserBackedBefore) {
@@ -93,6 +117,7 @@ class GlobalState {
         this._renderStats();
         this._renderProgressBar();
         this._renderUnitsLeft();
+        this._activateCards();
     }
 }
 

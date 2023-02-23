@@ -1,5 +1,4 @@
 import { addCommasToNumber } from "./utils/utils";
-import { selectCard } from "./selectCard";
 
 
 // Total donations and backers from stats section
@@ -18,9 +17,6 @@ const mahoganyUnitsLeft = document.querySelectorAll("[mahogany-units-left]");
 const bambooCards = document.querySelectorAll("[bamboo-card]");
 const blackCards = document.querySelectorAll("[black-card]");
 const mahoganyCards = document.querySelectorAll("[mahogany-card]");
-
-// Popup Cards Only
-const popupSubCards = document.querySelectorAll(".popup__card__content");
 
 class GlobalState {
     constructor() {
@@ -51,11 +47,6 @@ class GlobalState {
         } else if (this._unitsLeft.mahogany === 0) {
             mahoganyCards.forEach(card => card.setAttribute("disabled", ""));
         }
-
-        // Añadir eventListeners solo a las cards que no tengan el attributo disabled
-        popupSubCards.forEach(card => {
-            card.addEventListener("click", () => selectCard.call(card, null));
-        });
     }
 
 

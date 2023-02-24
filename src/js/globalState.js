@@ -72,18 +72,19 @@ class GlobalState {
       this._totalBackers++;
     }
 
-    this._renderAll();
+    this._renderUnitsLeft();
+    this._disableCards();
   }
 
 
   /* ========== DOM RENDER METHODS ========== */
 
-  _renderStats() {
+  renderStats() {
     totalDonations.textContent = addCommasToNumber(this._totalDonations);
     totalBackers.textContent = addCommasToNumber(this._totalBackers);
   }
 
-  _renderProgressBar() {
+  renderProgressBar() {
     // Total donations divided by the target amount
     const percentage = (this._totalDonations / 100000).toFixed(2);
     progressBar.style.transform = `scaleX(${percentage})`;
@@ -118,8 +119,8 @@ class GlobalState {
   /* ========== RENDER ALL ========== */
 
   _renderAll() {
-    this._renderStats();
-    this._renderProgressBar();
+    this.renderStats();
+    this.renderProgressBar();
     this._renderUnitsLeft();
     this._disableCards();
   }

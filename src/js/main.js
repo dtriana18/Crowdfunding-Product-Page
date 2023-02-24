@@ -141,9 +141,16 @@ const thanksPopup = document.querySelector("#thanksPopup");
 const thanksOverlayer = document.querySelector("#thanksOverlayer");
 const gotItButton = document.querySelector("#gotItButton");
 
+function updateStats() {
+    globalState.renderStats();
+    globalState.renderProgressBar();
+}
+
 function toggleThanksPopup() {
     thanksOverlayer.toggleAttribute("show");
     thanksPopup.toggleAttribute("show");
+    
+    updateStats();
 }
 
 gotItButton.addEventListener("click", toggleThanksPopup);

@@ -17,6 +17,10 @@ const bambooCards = document.querySelectorAll("[bamboo-card]");
 const blackCards = document.querySelectorAll("[black-card]");
 const mahoganyCards = document.querySelectorAll("[mahogany-card]");
 
+
+
+
+
 class GlobalState {
   constructor() {
     this._totalDonations = 89914;
@@ -33,6 +37,7 @@ class GlobalState {
     // Renders when the instance is created
     this._renderAll();
   }
+
 
   /* ========== UPDATE DATA ========== */
 
@@ -64,6 +69,7 @@ class GlobalState {
 
     this._renderAll();
   }
+
 
   /* ========== DOM RENDER METHODS ========== */
 
@@ -103,6 +109,7 @@ class GlobalState {
         break;
     }
   }
+
 
   /* ========== RENDER ALL ========== */
 

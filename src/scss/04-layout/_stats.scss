@@ -89,8 +89,8 @@
         height: 100%;
         background-color: $cyan;
 
-        transform: scaleX(50%);
+        transform: scaleX(0);
         transform-origin: left;
-        transition: transform 500ms;
+        transition: transform 1000ms;
     }
 }

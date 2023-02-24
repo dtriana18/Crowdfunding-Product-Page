@@ -97,25 +97,20 @@ class GlobalState {
 
   // Disables the cards if they have no unitsLeft (out of stock)
   _disableCards() {
-    switch (true) {
-      case this._unitsLeft.noReward === 0:
-        noRewardCard.setAttribute("disabled", "");
-        break;
-
-      case this._unitsLeft.bamboo === 0:
-        bambooCards.forEach((card) => card.setAttribute("disabled", ""));
-        break;
-
-      case this._unitsLeft.black === 0:
-        blackCards.forEach((card) => card.setAttribute("disabled", ""));
-        break;
-
-      case this._unitsLeft.mahogany === 0:
-        mahoganyCards.forEach((card) => card.setAttribute("disabled", ""));
-        break;
-
-      default:
-        break;
+    if (this._unitsLeft.noReward === 0) {
+      noRewardCard.setAttribute("disabled", "");
+    }
+    
+    if (this._unitsLeft.bamboo === 0) {
+      bambooCards.forEach((card) => card.setAttribute("disabled", ""));
+    }
+    
+    if (this._unitsLeft.black === 0) {
+      blackCards.forEach((card) => card.setAttribute("disabled", ""));
+    }
+    
+    if (this._unitsLeft.mahogany === 0) {
+      mahoganyCards.forEach((card) => card.setAttribute("disabled", ""));
     }
   }
 

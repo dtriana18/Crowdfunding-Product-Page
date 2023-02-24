@@ -19,7 +19,35 @@ const blackCards = document.querySelectorAll("[black-card]");
 const mahoganyCards = document.querySelectorAll("[mahogany-card]");
 
 
+async function loopWithDelay(element, prev, curr) {
+  for (let value = prev; value <= curr; value++) {
 
+    const unitsLeft = curr - value;
+
+    if (unitsLeft >= 200) {
+      value = curr - 200;
+    }
+
+    let stepDelay;
+
+    switch (true) {
+      case unitsLeft <= 5:
+        stepDelay = 300;
+        break;
+
+      case unitsLeft <= 10:
+        stepDelay = 150;
+        break;
+    
+      default:
+        stepDelay = 1
+        break;
+    }
+
+    element.textContent = addCommasToNumber(value);
+    await new Promise(resolve => setTimeout(resolve, stepDelay));
+  }
+}
 
 
 class GlobalState {
@@ -80,14 +108,25 @@ class GlobalState {
   /* ========== DOM RENDER METHODS ========== */
 
   renderStats() {
-    totalDonations.textContent = addCommasToNumber(this._totalDonations);
-    totalBackers.textContent = addCommasToNumber(this._totalBackers);
+    let prevTotalDonations = Number(totalDonations.textContent.replace(",", ""));
+    let prevTotalBackers = Number(totalBackers.textContent.replace(",", ""));
+
+    const currentTotalDonations = this._totalDonations;
+    const currentTotalBackers = this._totalBackers;
+    
+    loopWithDelay(totalDonations, prevTotalDonations, currentTotalDonations);
+    loopWithDelay(totalBackers, prevTotalBackers, currentTotalBackers);
   }
 
   renderProgressBar() {
+    progressBar.style.transform = `scaleX(0.2)`;
+
     // Total donations divided by the target amount
     const percentage = (this._totalDonations / 100000).toFixed(2);
-    progressBar.style.transform = `scaleX(${percentage})`;
+
+    setTimeout(() => {
+      progressBar.style.transform = `scaleX(${percentage})`;
+    }, 1000)
   }
 
   _renderUnitsLeft() {

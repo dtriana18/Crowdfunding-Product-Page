@@ -144,8 +144,9 @@ const statsWrapper = document.querySelector(".stats__wrapper");
 statsWrapper.setAttribute("active", "");
 
 function updateStats() {
-    statsWrapper.removeAttribute("active", "")
-
+    statsWrapper.removeAttribute("active", "");
+    globalState.renderProgressBar();
+    
     setTimeout(() => {
         statsWrapper.scrollIntoView({ behavior: "smooth" })
     }, 300);
@@ -156,14 +157,12 @@ function updateStats() {
 
     setTimeout(() => {
         globalState.renderStats();
-        globalState.renderProgressBar();
     }, 1000);
 }
 
 function openThanksPopup() {
     thanksOverlayer.setAttribute("show", "");
     thanksPopup.setAttribute("show", "");
-    statsWrapper.removeAttribute("active");
 }
 
 function closeThanksPopup() {

@@ -70,6 +70,17 @@
     }
 }
 
+.stats__wrapper {
+    scroll-margin-top: 64px;
+
+    opacity: 0;
+    
+    &[active] {
+        transition: opacity 500ms 300ms;
+        opacity: 1;
+    }
+}
+
 .progress-bar {
     margin-top: 8px;
 

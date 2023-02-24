@@ -140,20 +140,40 @@ function toggleMainPopup() {
 const thanksPopup = document.querySelector("#thanksPopup");
 const thanksOverlayer = document.querySelector("#thanksOverlayer");
 const gotItButton = document.querySelector("#gotItButton");
+const statsWrapper = document.querySelector(".stats__wrapper");
+statsWrapper.setAttribute("active", "");
 
 function updateStats() {
-    globalState.renderStats();
-    globalState.renderProgressBar();
+    statsWrapper.removeAttribute("active", "")
+
+    setTimeout(() => {
+        statsWrapper.scrollIntoView({ behavior: "smooth" })
+    }, 300);
+
+    setTimeout(() => {
+        statsWrapper.setAttribute("active", "")
+    }, 500);
+
+    setTimeout(() => {
+        globalState.renderStats();
+        globalState.renderProgressBar();
+    }, 1000);
 }
 
-function toggleThanksPopup() {
-    thanksOverlayer.toggleAttribute("show");
-    thanksPopup.toggleAttribute("show");
-    
+function openThanksPopup() {
+    thanksOverlayer.setAttribute("show", "");
+    thanksPopup.setAttribute("show", "");
+    statsWrapper.removeAttribute("active");
+}
+
+function closeThanksPopup() {
+    thanksOverlayer.removeAttribute("show");
+    thanksPopup.removeAttribute("show");
+
     updateStats();
 }
 
-gotItButton.addEventListener("click", toggleThanksPopup);
+gotItButton.addEventListener("click", closeThanksPopup);
 
 
 
@@ -211,7 +231,7 @@ selectCardsButtons.forEach(button => {
 function sendForm(plan, value) {
     setTimeout(() => {
         toggleMainPopup();
-        toggleThanksPopup();
+        openThanksPopup();
 
         // Updates the global state depending on the plan selected and value entered, and renders de data into the DOM
         globalState.updateGlobalState(plan, value)

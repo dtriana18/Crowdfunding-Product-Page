@@ -2,8 +2,6 @@
 @use "../03-components/buttons" as *;
 
 .thanks {
-    will-change: visibility, opacity, transform;
-
     z-index: $z-max;
     position: fixed;
     top: 50%;

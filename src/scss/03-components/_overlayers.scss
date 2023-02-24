@@ -1,8 +1,6 @@
 @use "../01-utilities" as *;
 
 %overlayer {
-    will-change: visibility, opacity;
-
     position: fixed;
     top: 0;
     left: 0;

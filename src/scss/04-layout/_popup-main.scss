@@ -1,8 +1,6 @@
 @use "../01-utilities" as *;
 
 .popup {
-    will-change: visibility, opacity, transform;
-
     z-index: $z-max;
     position: fixed;
     top: 50%;

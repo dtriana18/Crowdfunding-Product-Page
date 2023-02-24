@@ -72,6 +72,10 @@
 
 .stats__wrapper {
     scroll-margin-top: 64px;
+    
+    @include mq(tablet) {
+        scroll-margin-top: 120px;
+    }
 
     opacity: 0;
     

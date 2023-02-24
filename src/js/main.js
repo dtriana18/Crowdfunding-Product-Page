@@ -226,9 +226,14 @@ function validateForm(event) {
     /* ========== NO REWARD CARD ========== */
 
     const noRewardCard = popupForm.querySelector("#noRewardCard");
+    const noRewardCardText = noRewardCard.querySelector(".popup__card__text");
 
     // If the "no reward" card is selected, thanks the user and returns without validation (not required)
     if (noRewardCard.hasAttribute("active")) {
+        setTimeout(() => {
+            noRewardCardText.textContent = "Thanks for your support! If you'd like to contribute further, please consider pledging with one of our available reward options. Your continued support helps us to further develop and improve our project."
+        }, 500);
+
         sendForm("noReward", 0);
         return;
     }

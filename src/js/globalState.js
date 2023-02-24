@@ -13,6 +13,7 @@ const blackUnitsLeft = document.querySelectorAll("[black-units-left]");
 const mahoganyUnitsLeft = document.querySelectorAll("[mahogany-units-left]");
 
 // Cards
+const noRewardCard = document.querySelector("#noRewardCard");
 const bambooCards = document.querySelectorAll("[bamboo-card]");
 const blackCards = document.querySelectorAll("[black-card]");
 const mahoganyCards = document.querySelectorAll("[mahogany-card]");
@@ -44,6 +45,10 @@ class GlobalState {
   // Updates global state data based on the plan selected and pledge entered
   updateGlobalState(plan, value) {
     switch (plan) {
+      case "noReward":
+        this._unitsLeft.noReward--;
+        break;
+
       case "bamboo":
         this._unitsLeft.bamboo--;
         break;
@@ -93,6 +98,10 @@ class GlobalState {
   // Disables the cards if they have no unitsLeft (out of stock)
   _disableCards() {
     switch (true) {
+      case this._unitsLeft.noReward === 0:
+        noRewardCard.setAttribute("disabled", "");
+        break;
+
       case this._unitsLeft.bamboo === 0:
         bambooCards.forEach((card) => card.setAttribute("disabled", ""));
         break;

@@ -1,5 +1,10 @@
 import { addCommasToNumber } from "./utils/utils";
 
+
+
+
+/* ========== DOM ELEMENTS ========== */
+
 // Total donations and backers from stats section
 const totalDonations = document.querySelector("#totalDonations");
 const totalBackers = document.querySelector("#totalBackers");
@@ -19,7 +24,12 @@ const blackCards = document.querySelectorAll("[black-card]");
 const mahoganyCards = document.querySelectorAll("[mahogany-card]");
 
 
-async function loopWithDelay(element, prev, curr) {
+
+
+
+/* ========== NUMBERS INCREASING ANIMATION ========== */
+
+async function increasingNumbersAnimation(element, prev, curr) {
   for (let value = prev; value <= curr; value++) {
 
     const unitsLeft = curr - value;
@@ -50,6 +60,8 @@ async function loopWithDelay(element, prev, curr) {
 }
 
 
+/* ========== GLOBAL STATE ========== */
+
 class GlobalState {
   constructor() {
     this._totalDonations = 89914;
@@ -72,6 +84,7 @@ class GlobalState {
 
   // Updates global state data based on the plan selected and pledge entered
   updateGlobalState(plan, value) {
+    // Decrease the number of unitsLeft by 1, depending on the selected reward plan
     switch (plan) {
       case "noReward":
         this._unitsLeft.noReward--;
@@ -108,17 +121,19 @@ class GlobalState {
   /* ========== DOM RENDER METHODS ========== */
 
   renderStats() {
-    let prevTotalDonations = Number(totalDonations.textContent.replace(",", ""));
-    let prevTotalBackers = Number(totalBackers.textContent.replace(",", ""));
+    // Get the previous values by converting the textContent of the HTMLElements where the data was represented, to numbers
+    const prevTotalDonations = Number(totalDonations.textContent.replace(",", ""));
+    const prevTotalBackers = Number(totalBackers.textContent.replace(",", ""));
 
-    const currentTotalDonations = this._totalDonations;
-    const currentTotalBackers = this._totalBackers;
+    const currTotalDonations = this._totalDonations;
+    const currTotalBackers = this._totalBackers;
     
-    loopWithDelay(totalDonations, prevTotalDonations, currentTotalDonations);
-    loopWithDelay(totalBackers, prevTotalBackers, currentTotalBackers);
+    increasingNumbersAnimation(totalDonations, prevTotalDonations, currTotalDonations);
+    increasingNumbersAnimation(totalBackers, prevTotalBackers, currTotalBackers);
   }
 
   renderProgressBar() {
+    // Reset the progress bar length and recreate the animation every time the stats are modified
     progressBar.style.transform = `scaleX(0.2)`;
 
     // Total donations divided by the target amount
@@ -130,9 +145,9 @@ class GlobalState {
   }
 
   _renderUnitsLeft() {
-    bambooUnitsLeft.forEach((element) => (element.textContent = this._unitsLeft.bamboo));
-    blackUnitsLeft.forEach((element) => (element.textContent = this._unitsLeft.black));
-    mahoganyUnitsLeft.forEach((element) => (element.textContent = this._unitsLeft.mahogany));
+    bambooUnitsLeft.forEach((unit) => (unit.textContent = this._unitsLeft.bamboo));
+    blackUnitsLeft.forEach((unit) => (unit.textContent = this._unitsLeft.black));
+    mahoganyUnitsLeft.forEach((unit) => (unit.textContent = this._unitsLeft.mahogany));
   }
 
   // Disables the cards if they have no unitsLeft (out of stock)

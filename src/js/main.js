@@ -1,3 +1,5 @@
+// NOTE: Most, if not all, uses of setTimeout are intended to enhance the user experience by simulating a sequence of events and delaying specific changes in the interface. This creates a smoother and more organized transition between different actions, resulting in a more polished user interface.
+
 import { getElementsFromIds } from "./utils/utils";
 import { resetAllSubcards } from "./resetCards";
 import { globalState } from "./globalState";
@@ -135,41 +137,57 @@ function toggleMainPopup() {
 
 
 
-// ========== TOGGLE THANKS POPUP ==========
+// ========== OPEN / CLOSE THANKS POPUP ==========
 
 const thanksPopup = document.querySelector("#thanksPopup");
 const thanksOverlayer = document.querySelector("#thanksOverlayer");
 const gotItButton = document.querySelector("#gotItButton");
-const statsWrapper = document.querySelector(".stats__wrapper");
+const statsWrapper = document.querySelector("#statsWrapper");
+
+// Sets "active" attribute and make it visible by default
 statsWrapper.setAttribute("active", "");
 
-function updateStats() {
-    statsWrapper.removeAttribute("active", "");
-    globalState.renderProgressBar();
-    
+/*
+  1. Scrolls into view the stats section
+  2. Removes and adds the "active" attribute to create a fade-in animation
+  3. Renders a progress bar
+  4. Renders stats
+*/
+function renderStats() {
+    // 1. Scroll into view stats section
     setTimeout(() => {
         statsWrapper.scrollIntoView({ behavior: "smooth" })
     }, 300);
-
+    
+    // 2. Remove and add the "active" attribute to create a fade-in animation for the stats section every time the function is called
+    statsWrapper.removeAttribute("active");
     setTimeout(() => {
         statsWrapper.setAttribute("active", "")
     }, 500);
 
+
+    // 3. Renders progress bar
+    globalState.renderProgressBar();
+    
+    // 4. Renders stats
     setTimeout(() => {
         globalState.renderStats();
     }, 1000);
 }
 
+// Show thanks popup
 function openThanksPopup() {
     thanksOverlayer.setAttribute("show", "");
     thanksPopup.setAttribute("show", "");
 }
 
+// Hides thanks popup and trigger renderStats
 function closeThanksPopup() {
     thanksOverlayer.removeAttribute("show");
     thanksPopup.removeAttribute("show");
 
-    updateStats();
+    // Renders stats after popup is closed
+    renderStats();
 }
 
 gotItButton.addEventListener("click", closeThanksPopup);
@@ -225,7 +243,7 @@ selectCardsButtons.forEach(button => {
 
 
 
-// ========== FORM VALIDATION ==========
+// ========== SEND FORM ==========
 
 function sendForm(plan, value) {
     setTimeout(() => {

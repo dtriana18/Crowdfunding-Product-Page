@@ -32,14 +32,17 @@ const mahoganyCards = document.querySelectorAll("[mahogany-card]");
 async function increasingNumbersAnimation(element, prev, curr) {
   for (let value = prev; value <= curr; value++) {
 
+    // Difference between the current value and previous value,
     const unitsLeft = curr - value;
 
+    // To avoid iterating through every number if the difference between the previous and current number is too large (e.g. 999), which would take too much time for the animation to complete
     if (unitsLeft >= 200) {
       value = curr - 200;
     }
 
     let stepDelay;
 
+    // Slows down the animation as it approaches the target/current number
     switch (true) {
       case unitsLeft <= 5:
         stepDelay = 300;

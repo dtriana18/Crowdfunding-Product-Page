@@ -1,0 +1,14 @@
+@use "../01-utilities" as *;
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: #2F2F2F;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $white;
+	border-radius: 8px;
+}

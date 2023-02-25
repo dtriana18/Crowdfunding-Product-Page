@@ -49,7 +49,7 @@
         column-gap: 8px;
         max-width: 100px;
         padding: 16px 24px;
-        border: 1px solid rgba(#000000, 15%);
+        border: 1px solid rgba($black, 15%);
         border-radius: 999px;
 
         transition: border-color 300ms;
@@ -78,7 +78,7 @@
     &__dollar-sign {
         font-size: pxToRem(14);
         font-weight: $bold;
-        color: rgba(#000000, 25%);
+        color: rgba($black, 25%);
     }
 
     &__pledge-input {

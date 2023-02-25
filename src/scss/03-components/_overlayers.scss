@@ -21,7 +21,7 @@
 .mobile-menu-overlayer {
     @extend %overlayer;
     z-index: $z-1;
-    background: linear-gradient(to bottom, #000000, rgba(#000000, 0%));
+    background: linear-gradient(to bottom, $black, rgba($black, 0%));
 
     @include mq(tablet) {
         display: none;
@@ -31,11 +31,11 @@
 .main-overlayer {
     @extend %overlayer;
     z-index: $z-3;
-    background: #000000;
+    background: $black;
 }
 
 .thanks-overlayer {
     @extend %overlayer;
     z-index: $z-3;
-    background: #000000;
+    background: $black;
 }

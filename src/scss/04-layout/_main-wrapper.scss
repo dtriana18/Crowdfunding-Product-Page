@@ -1,7 +1,13 @@
+@use "../01-utilities" as *;
+
 .main {
     position: relative;
     transform: translateY(-56px);
 
     width: min(85%, 730px);
     margin-inline: auto;
+
+    @include mq(tablet) {
+        transform: translateY(-96px);
+    }
 }

@@ -48,7 +48,7 @@ This is the BEST solution to the Frontend Mentor's "Crowdfunding product page" c
 
 To keep track of my progress, I recorded each task in my Notion database and monitored it on a Kanban board. For each task, I created a new branch with the name of the functionality to be built, merged it with the main or parent branch, and then deleted it. This helped me to stay organized and on top of my workflow.
 
-I began with a mobile-first approach and structured my SCSS files using a modified 7-1 pattern. I then established global variables for design-related values like colors, font-weights, etc. And created some utility mixins, functions, and extends for common tasks.
+I began with a mobile-first approach, structured my SCSS files using a modified 7-1 pattern and used BEM convention to name my classes. I then established global variables for design-related values like colors, font-weights, etc. And created some utility mixins, functions, and extends for common tasks.
 
 Afterwards, I created the main layout components of my webpage, including the header, navigation menu, support section, stats section, and about section. After that, I added the functionality for toggling the bookmark button, then created the select reward popup and reward cards with custom radio buttons, a dropdown menu, autofocus on the pledge input and scroll into view functionality, among others, for better UX.
 

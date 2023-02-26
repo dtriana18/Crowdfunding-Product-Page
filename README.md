@@ -6,7 +6,7 @@ This is the BEST solution to the Frontend Mentor's "Crowdfunding product page" c
 
 <h3>PREVIEW AND DEPLOYMENT</h3>
 
-[Go to Live Site!](https://crowdfunding-product-page-dtriana18.netlify.app/)
+[Go to Live Site!](https://fem-crowdfunding-product-page.netlify.app/)
 
 ![If the GIF doesn't appear, please reload the page](https://res.cloudinary.com/docbyxdd1/image/upload/v1677390489/projects/Github/crowfunding-product-page/final-preview.gif)
 

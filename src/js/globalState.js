@@ -161,14 +161,26 @@ class GlobalState {
     
     if (this._unitsLeft.bamboo === 0) {
       bambooCards.forEach((card) => card.setAttribute("disabled", ""));
+
+      // Change the text of the selectRewardButton related to the card to "Out of stock"
+      const selectBambooRewardButton = bambooCards[0].querySelector(".about__card__button");
+      selectBambooRewardButton.textContent = "Out of stock";
     }
     
     if (this._unitsLeft.black === 0) {
       blackCards.forEach((card) => card.setAttribute("disabled", ""));
+
+      // Change the text of the selectRewardButton related to the card to "Out of stock"
+      const selectBlackRewardButton = blackCards[0].querySelector(".about__card__button");
+      selectBlackRewardButton.textContent = "Out of stock";
     }
     
     if (this._unitsLeft.mahogany === 0) {
       mahoganyCards.forEach((card) => card.setAttribute("disabled", ""));
+
+      // Change the text of the selectRewardButton related to the card to "Out of stock"
+      const selectMahoganyRewardButton = mahoganyCards[0].querySelector(".about__card__button");
+      selectMahoganyRewardButton.textContent = "Out of stock";
     }
   }
 

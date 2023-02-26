@@ -8,7 +8,7 @@ This is the BEST solution to the Frontend Mentor's "Crowdfunding product page" c
 
 [Go to Live Site!](https://crowdfunding-product-page-dtriana18.netlify.app/)
 
-![If the GIF doesn't appear, please reload the page](https://res.cloudinary.com/docbyxdd1/image/upload/v1677389085/projects/Github/crowfunding-product-page/preview_hriqev.gif)
+![If the GIF doesn't appear, please reload the page](https://res.cloudinary.com/docbyxdd1/image/upload/v1677390489/projects/Github/crowfunding-product-page/final-preview.gif)
 
 <hr/>
 
@@ -32,7 +32,7 @@ This is the BEST solution to the Frontend Mentor's "Crowdfunding product page" c
   - Local fonts used to reduce loading time and improve page speed
   - Preloading of fonts and resources to improve perceived performance and reduce latency
   
-  ![If the GIF doesn't appear, please reload the page](https://res.cloudinary.com/docbyxdd1/image/upload/e_loop:10/v1677385139/projects/Github/crowfunding-product-page/speed.gif)
+  ![If the GIF doesn't appear, please reload the page](https://res.cloudinary.com/docbyxdd1/image/upload/v1677390864/projects/Github/crowfunding-product-page/speed_ztmqub.gif)
   
 </details>
 

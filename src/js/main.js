@@ -286,7 +286,7 @@ function validateForm(event) {
     /* ========== OTHER CARDS ========== */
 
     // Selects the current pledge input by finding an <input type="text/> element that does not have the "disabled" attribute. All pledge inputs are disabled by default, and the "disabled" attribute is only removed when the card is "active" or "selected".
-    const currentPledgeInput = popupForm.querySelector(`input[type="text"]:not([disabled])`);
+    const currentPledgeInput = popupForm.querySelector(`input[plan]:not([disabled])`);
 
 
     // Removes any previous error state from the pledge input's wrapper element

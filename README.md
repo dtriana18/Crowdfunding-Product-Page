@@ -6,7 +6,7 @@ This is the **BEST** solution to the Frontend Mentor's **Crowdfunding Product Pa
 
 ### PREVIEW AND DEPLOYMENT
 
-**[Go to Live Site!](https://your-live-site-url.com)**
+**[Go to Live Site!](https://fem-crowdfunding-product-page.netlify.app/)**
 
 ![If the GIF doesn't appear, please reload the page](https://res.cloudinary.com/docbyxdd1/image/upload/v1677390489/projects/Github/crowfunding-product-page/final-preview.gif)
 

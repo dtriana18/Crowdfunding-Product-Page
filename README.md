@@ -15,7 +15,7 @@ This is the BEST solution to the Frontend Mentor's "Crowdfunding product page" c
 <h3>BUILT WITH</h3>
 
 - HTML
-- CSS
+- SCSS
 - JavaScript
 - Vite
 

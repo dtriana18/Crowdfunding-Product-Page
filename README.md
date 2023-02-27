@@ -41,11 +41,11 @@ This is the **BEST** solution to the Frontend Mentor's **Crowdfunding Product Pa
   
 </details>
 
-- **Responsive design** for optimal display on all devices.
-- **Form validation** for error-free data submission.
-- **Updates data** after the user pledges for accurate tracking.
-- **Disables pledge cards** after all units have been claimed.
-- **Beautiful** and **smooth transitions/animations** for a better user experience.
+2. **Responsive design** for optimal display on all devices.
+3. **Form validation** for error-free data submission.
+4. **Updates data** after the user pledges for accurate tracking.
+5. **Disables pledge cards** after all units have been claimed.
+6. **Beautiful** and **smooth transitions/animations** for a better user experience.
 
 ---
 
